@@ -1,0 +1,41 @@
+{
+    "interactionModel": {
+      "languageModel": {
+        "invocationName": "asistente financiero",
+        "intents": [
+          {
+            "name": "ConversacionIntent",
+            "slots": [
+              {
+                "name": "mensaje",
+                "type": "AMAZON.SearchQuery"
+              }
+            ],
+            "samples": [
+              "{mensaje}",
+              "di {mensaje}",
+              "pregunta {mensaje}",
+              "me gustaría {mensaje}",
+              "quiero {mensaje}",
+              "dime {mensaje}",
+              "consulta {mensaje}"
+            ]
+          },
+          {
+            "name": "AMAZON.CancelIntent",
+            "samples": []
+          },
+          {
+            "name": "AMAZON.HelpIntent",
+            "samples": []
+          },
+          {
+            "name": "AMAZON.StopIntent",
+            "samples": []
+          }
+        ],
+        "types": []
+      }
+    }
+  }
+  
