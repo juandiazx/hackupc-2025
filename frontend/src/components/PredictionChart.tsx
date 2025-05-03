@@ -112,7 +112,7 @@ export default function SpendingPredictionChart({
     for (let i = 1; i <= remainingDays; i++) {
       const progress = i / remainingDays;
       // Simple linear progression with a bit of randomization
-      const randomFactor = Math.random() * 0.2; // Random factor between 0 and 5%
+      const randomFactor = Math.random() * 0.1; // Random factor between 0 and 5%
       const dayValue = lastValue + valueToAdd * progress * (1 + randomFactor);
 
       predictedData.push({
