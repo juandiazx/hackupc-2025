@@ -85,12 +85,15 @@ async function handleLaunchRequest() {
   if (initializeError) {
     console.warn('⚠️ Initialization error detected at launch:', initializeError);
     return buildResponse(
-      "Welcome to your Financial Assistant. We're experiencing some technical issues at the moment. Our team is working to resolve them as soon as possible."
+      "Welcome to your Financial Assistant. We're experiencing some technical issues at the moment. Our team is working to resolve them as soon as possible.",
+      true
     );
   }
   
   return buildResponse(
-    "Welcome to your Financial Assistant! What can I help you with today?"
+    "Welcome to your Financial Assistant! What can I help you with today?",
+    false,
+    "You can ask about your spending, categories, or trends. What would you like to know?"
   );
 }
 
@@ -104,7 +107,11 @@ async function handleIntentRequest(event) {
   if (intentName === "ConversacionIntent") {
     const mensaje = intent?.slots?.mensaje?.value;
     if (!mensaje) {
-      return buildResponse("I didn't quite catch that. Could you rephrase your question?");
+      return buildResponse(
+        "I didn't quite catch that. Could you rephrase your question?",
+        false,
+        "You can ask about your spending or finances. What would you like to know?"
+      );
     }
     
     console.log(`📝 User message: "${mensaje}"`);
@@ -112,7 +119,7 @@ async function handleIntentRequest(event) {
     // Check if there was an initialization error
     if (initializeError) {
       console.warn('⚠️ Initialization error detected:', initializeError);
-      return buildResponse("I'm sorry, we're experiencing technical difficulties right now. Please try again later.");
+      return buildResponse("I'm sorry, we're experiencing technical difficulties right now. Please try again later.", true);
     }
     
     // Get financial data from S3
@@ -121,11 +128,15 @@ async function handleIntentRequest(event) {
       
       // Process query with AI
       const respuesta = await processWithAI(mensaje, transactionData);
-      return buildResponse(respuesta);
+      
+      // Add a reprompt to keep the session open
+      const repromptText = "Is there anything else you'd like to know about your finances?";
+      
+      return buildResponse(respuesta, false, repromptText);
       
     } catch (error) {
       console.error('❌ Error getting data or processing with AI:', error);
-      return buildResponse("I couldn't access your financial data right now. Please try again later.");
+      return buildResponse("I couldn't access your financial data right now. Please try again later.", true);
     }
   }
   else if (intentName === "DiagnosticIntent") {
@@ -155,22 +166,32 @@ async function handleIntentRequest(event) {
         }
       }
       
-      return buildResponse(responseText);
+      return buildResponse(
+        responseText,
+        false,
+        "Would you like to try accessing your financial data now?"
+      );
     } catch (diagError) {
       console.error('❌ Diagnostic error:', diagError);
-      return buildResponse("Error running diagnostics. Please check CloudWatch logs for more details.");
+      return buildResponse("Error running diagnostics. Please check CloudWatch logs for more details.", true);
     }
   }
   else if (intentName === "AMAZON.HelpIntent") {
     return buildResponse(
-      "You can ask me about your spending, like 'how much did I spend on transportation?' or 'what are my main expenses?' You can also ask about needs versus wants in your spending habits."
+      "You can ask me about your spending, like 'how much did I spend on transportation?' or 'what are my main expenses?' You can also ask about needs versus wants in your spending habits.",
+      false,
+      "What would you like to know about your finances?"
     );
   }
   else if (intentName === "AMAZON.StopIntent" || intentName === "AMAZON.CancelIntent") {
     return buildResponse("See you soon! I'm here whenever you need to review your finances.", true);
   }
   else {
-    return buildResponse("I don't recognize that instruction. Can you say it differently?");
+    return buildResponse(
+      "I don't recognize that instruction. Can you say it differently?",
+      false,
+      "Try asking about your spending or recent transactions."
+    );
   }
 }
 
@@ -275,8 +296,8 @@ async function getTransactionsFromS3() {
         const category = tx.category || tx.Category || 'uncategorized';
         const description = tx.description || tx['description/merchant'] || '';
         
-        // Get the predicted expense type from CSV (matches your sample data)
-        const predictedExpenseType = tx.predicted_expense_type || tx.predictedExpenseType || 'unknown';
+        // Get the predicted expense type from CSV (updating to match new format)
+        const expenseType = tx.predicted_expense_type || 'unknown';
         
         // Validate amount is a number
         if (typeof amount !== 'number') {
@@ -288,7 +309,7 @@ async function getTransactionsFromS3() {
           date: date,
           category: category,
           description: description,
-          expenseType: predictedExpenseType // Updated to use predicted_expense_type from CSV
+          expenseType: expenseType // Updated to use predicted_expense_type from CSV
         });
       } catch (rowErr) {
         console.error(`❌ Error processing row ${i+1}:`, rowErr, tx);
@@ -421,6 +442,43 @@ async function processWithAI(userQuery, transactionData) {
     const lastWeekTxData = formatForAI(lastWeekTransactions);
     const lastMonthTxData = formatForAI(lastMonthTransactions);
     
+    // Calculate needs vs. wants summaries for each time period
+    // For new expense type classification - updated to match new format
+    const calculateNeedsVsWants = (transactions) => {
+      const needsTotal = transactions
+        .filter(tx => tx.expenseType?.toLowerCase() === 'need')
+        .reduce((sum, tx) => sum + tx.amount, 0);
+      
+      const wantsTotal = transactions
+        .filter(tx => tx.expenseType?.toLowerCase() === 'want')
+        .reduce((sum, tx) => sum + tx.amount, 0);
+      
+      const uncategorizedTotal = transactions
+        .filter(tx => !['need', 'want'].includes(tx.expenseType?.toLowerCase()))
+        .reduce((sum, tx) => sum + tx.amount, 0);
+      
+      return {
+        needs: needsTotal,
+        wants: wantsTotal,
+        uncategorized: uncategorizedTotal,
+        total: needsTotal + wantsTotal + uncategorizedTotal,
+        needsPercentage: Math.round((needsTotal / (needsTotal + wantsTotal + uncategorizedTotal)) * 100) || 0,
+        wantsPercentage: Math.round((wantsTotal / (needsTotal + wantsTotal + uncategorizedTotal)) * 100) || 0
+      };
+    };
+    
+    const allTxSummary = calculateNeedsVsWants(allTransactions);
+    const lastWeekTxSummary = calculateNeedsVsWants(lastWeekTransactions);
+    const lastMonthTxSummary = calculateNeedsVsWants(lastMonthTransactions);
+    
+    // Add needs vs. wants insights to the prompt for AI
+    const needsWantsInsights = `
+NEEDS VS WANTS ANALYSIS:
+Last Week: ${lastWeekTxSummary.needsPercentage}% needs ($${lastWeekTxSummary.needs.toFixed(2)}), ${lastWeekTxSummary.wantsPercentage}% wants ($${lastWeekTxSummary.wants.toFixed(2)})
+Last Month: ${lastMonthTxSummary.needsPercentage}% needs ($${lastMonthTxSummary.needs.toFixed(2)}), ${lastMonthTxSummary.wantsPercentage}% wants ($${lastMonthTxSummary.wants.toFixed(2)})
+All Time: ${allTxSummary.needsPercentage}% needs ($${allTxSummary.needs.toFixed(2)}), ${allTxSummary.wantsPercentage}% wants ($${allTxSummary.wants.toFixed(2)})
+`;
+    
     // Build prompt for AI with context about available time periods
     const prompt = `
 You are a friendly and helpful personal financial assistant analyzing a person's spending habits. Be conversational, relatable, and sound like a real assistant (not a robot).
@@ -429,6 +487,8 @@ USER'S FINANCIAL DATA:
 Full date range: ${oldestDate.toISOString().split('T')[0]} to ${newestDate.toISOString().split('T')[0]}
 Last week: ${oneWeekAgo.toISOString().split('T')[0]} to ${newestDate.toISOString().split('T')[0]} (${lastWeekTransactions.length} transactions)
 Last month: ${oneMonthAgo.toISOString().split('T')[0]} to ${newestDate.toISOString().split('T')[0]} (${lastMonthTransactions.length} transactions)
+
+${needsWantsInsights}
 
 ALL TRANSACTIONS (${allTransactions.length} total):
 ${JSON.stringify(allTxData, null, 2)}
@@ -449,12 +509,13 @@ Instructions:
    - If they don't specify a time period, use LAST MONTH TRANSACTIONS by default
 2. Carefully analyze the appropriate transaction data to specifically address the user's question.
 3. Use precise data and exact calculations based on the raw data provided.
-4. Be conversational, helpful, and concise. Sound like a friendly assistant, not a robot.
-5. Limit your response to a maximum of 3 sentences since this will be converted to speech.
-6. When mentioning expense categories, provide specific examples of what might be in those categories.
-7. If asked about data you don't have, mention the date range you do have data for.
-8. When talking about money amounts, round to whole numbers for easier understanding.
-9. Use a natural, friendly tone with contractions (I've, you've, we're) and conversational phrases.
+4. The 'expenseType' field classifies transactions as either 'need' or 'want', use this information if the user asks about spending necessities vs discretionary purchases.
+5. Be conversational, helpful, and concise. Sound like a friendly assistant, not a robot.
+6. Limit your response to a maximum of 3 sentences since this will be converted to speech.
+7. When mentioning expense categories, provide specific examples of what might be in those categories.
+8. If asked about data you don't have, mention the date range you do have data for.
+9. When talking about money amounts, round to whole numbers for easier understanding.
+10. Use a natural, friendly tone with contractions (I've, you've, we're) and conversational phrases.
 `;
 
     // Log prompt size for debugging
@@ -495,11 +556,20 @@ Instructions:
           console.log('🔍 Using default (month) data for reduced prompt');
         }
         
+        // Calculate needs vs. wants for this reduced dataset
+        const relevantTxSummary = calculateNeedsVsWants(relevantData);
+        const reducedNeedsWantsInsights = `
+NEEDS VS WANTS ANALYSIS:
+Selected Period: ${relevantTxSummary.needsPercentage}% needs ($${relevantTxSummary.needs.toFixed(2)}), ${relevantTxSummary.wantsPercentage}% wants ($${relevantTxSummary.wants.toFixed(2)})
+`;
+        
         const reducedPrompt = `
 You are a friendly and helpful personal financial assistant analyzing a person's spending habits. Be conversational, relatable, and sound like a real assistant (not a robot).
 
 USER'S FINANCIAL DATA:
 Full date range: ${oldestDate.toISOString().split('T')[0]} to ${newestDate.toISOString().split('T')[0]}
+
+${reducedNeedsWantsInsights}
 
 TRANSACTIONS (${relevantData.length} total):
 ${JSON.stringify(relevantData, null, 2)}
@@ -509,11 +579,12 @@ The user's question is: "${userQuery}"
 Instructions:
 1. Carefully analyze the transaction data provided to specifically address the user's question.
 2. Use precise data and exact calculations based on the provided data.
-3. Be conversational, helpful, and concise. Sound like a friendly assistant, not a robot.
-4. Limit your response to a maximum of 3 sentences since this will be converted to speech.
-5. If asked about data you don't have, mention the date range you do have data for.
-6. When talking about money amounts, round to whole numbers for easier understanding.
-7. Use a natural, friendly tone with contractions (I've, you've, we're) and conversational phrases.
+3. The 'expenseType' field classifies transactions as either 'need' or 'want', use this information if the user asks about spending necessities vs discretionary purchases.
+4. Be conversational, helpful, and concise. Sound like a friendly assistant, not a robot.
+5. Limit your response to a maximum of 3 sentences since this will be converted to speech.
+6. If asked about data you don't have, mention the date range you do have data for.
+7. When talking about money amounts, round to whole numbers for easier understanding.
+8. Use a natural, friendly tone with contractions (I've, you've, we're) and conversational phrases.
 `;
           
         try {
