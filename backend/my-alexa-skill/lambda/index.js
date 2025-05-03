@@ -309,8 +309,7 @@ async function getTransactionsFromS3() {
 }
 
 /**
- * Process user query with AI using the financial data with improved error handling
- * This version uses direct HTTPS calls instead of the Gemini library
+ * Process user query with AI using the raw financial data from the last 30 days
  */
 async function processWithAI(userQuery, transactionData) {
   try {
@@ -333,9 +332,9 @@ async function processWithAI(userQuery, transactionData) {
       return "No puedo procesar tu consulta en este momento debido a un problema de configuración.";
     }
     
-    // Preprocess and validate data
+    // Filter for valid transactions
     const validTransactions = transactionData.filter(tx => 
-      tx && typeof tx.amount === 'number' && !isNaN(tx.amount)
+      tx && typeof tx.amount === 'number' && !isNaN(tx.amount) && tx.date
     );
     
     if (validTransactions.length === 0) {
@@ -343,102 +342,81 @@ async function processWithAI(userQuery, transactionData) {
       return "No he encontrado transacciones válidas para analizar.";
     }
     
-    // Calculate totals and classify data
-    const totalGastado = validTransactions.reduce((sum, tx) => sum + tx.amount, 0);
+    // Get current date and calculate date 30 days ago
+    const currentDate = new Date();
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(currentDate.getDate() - 30);
     
-    // Expenses by category
-    const gastosPorCategoria = {};
-    validTransactions.forEach(tx => {
-      const category = tx.category || 'Sin categoría';
-      if (!gastosPorCategoria[category]) {
-        gastosPorCategoria[category] = 0;
-      }
-      gastosPorCategoria[category] += tx.amount;
-    });
+    console.log(`🔍 Filtering transactions from ${thirtyDaysAgo.toISOString().split('T')[0]} to ${currentDate.toISOString().split('T')[0]}`);
     
-    // Expenses by type (need vs want)
-    const gastosPorTipo = {
-      need: 0,
-      want: 0,
-      unknown: 0
-    };
-    
-    validTransactions.forEach(tx => {
-      if (tx.expenseType === 'need') {
-        gastosPorTipo.need += tx.amount;
-      } else if (tx.expenseType === 'want') {
-        gastosPorTipo.want += tx.amount;
-      } else {
-        gastosPorTipo.unknown += tx.amount;
+    // Filter transactions for the last 30 days
+    const recentTransactions = validTransactions.filter(tx => {
+      try {
+        // Handle different date formats that might be in the data
+        const txDate = new Date(tx.date);
+        return !isNaN(txDate.getTime()) && txDate >= thirtyDaysAgo && txDate <= currentDate;
+      } catch (dateError) {
+        console.warn(`⚠️ Could not parse date: ${tx.date}`, dateError);
+        return false;
       }
     });
     
-    // Organize dates to see the time period
-    const fechas = validTransactions
-      .map(tx => tx.date)
-      .filter(date => date && date.trim() !== '')
-      .sort();
+    console.log(`📊 Found ${recentTransactions.length} transactions in the last 30 days`);
     
-    const fechaInicio = fechas.length > 0 ? fechas[0] : 'desconocida';
-    const fechaFin = fechas.length > 0 ? fechas[fechas.length - 1] : 'desconocida';
+    if (recentTransactions.length === 0) {
+      console.warn('⚠️ No transactions found in the last 30 days');
+      return "No he encontrado transacciones en los últimos 30 días para analizar.";
+    }
     
-    // Format data for analysis
-    const categoriasOrdenadas = Object.entries(gastosPorCategoria)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 5)
-      .map(([cat, amount]) => `${cat}: $${amount.toFixed(2)}`);
+    // Calculate date range for context
+    const sortedDates = recentTransactions
+      .map(tx => new Date(tx.date))
+      .filter(date => !isNaN(date.getTime()))
+      .sort((a, b) => a - b);
     
-    const porcentajeNecesidades = totalGastado > 0 
-      ? (gastosPorTipo.need / totalGastado * 100).toFixed(1) 
-      : 0;
+    const fechaInicio = sortedDates.length > 0 
+      ? sortedDates[0].toISOString().split('T')[0] 
+      : 'desconocida';
+    const fechaFin = sortedDates.length > 0 
+      ? sortedDates[sortedDates.length - 1].toISOString().split('T')[0] 
+      : 'desconocida';
     
-    const porcentajeDeseos = totalGastado > 0 
-      ? (gastosPorTipo.want / totalGastado * 100).toFixed(1) 
-      : 0;
-    
-    // Examples of recent transactions for context
-    // Sort by date descending to get the most recent ones
-    const transaccionesOrdenadas = [...validTransactions].sort((a, b) => {
-      if (!a.date || !b.date) return 0;
-      return new Date(b.date) - new Date(a.date);
-    });
-    
-    const ejemplos = transaccionesOrdenadas.slice(0, 5).map(tx => ({
+    // Format the raw transaction data to send to the AI
+    // Remove any sensitive information if needed
+    const cleanTransactions = recentTransactions.map(tx => ({
       amount: tx.amount,
       date: tx.date,
-      category: tx.category,
+      category: tx.category || 'Sin categoría',
       description: tx.description || 'Sin descripción',
       expenseType: tx.expenseType || 'unknown'
     }));
     
-    // Build prompt for AI
+    // Build prompt for AI with all raw transaction data
     const prompt = `
 Eres un asistente financiero personal que analiza gastos de una persona.
 
-DATOS FINANCIEROS DEL USUARIO:
-- Período de tiempo: ${fechaInicio} a ${fechaFin}
-- Total gastado: $${totalGastado.toFixed(2)}
-- Principales categorías de gasto: ${categoriasOrdenadas.join(', ')}
-- Distribución de gastos: ${porcentajeNecesidades}% en necesidades, ${porcentajeDeseos}% en deseos
-- Ejemplos de transacciones recientes: ${JSON.stringify(ejemplos, null, 2)}
+DATOS FINANCIEROS DEL USUARIO DE LOS ÚLTIMOS 30 DÍAS (${fechaInicio} a ${fechaFin}):
+${JSON.stringify(cleanTransactions, null, 2)}
 
 La consulta del usuario es: "${userQuery}"
 
 Instrucciones:
-1. Responde con información relevante a la consulta basándote en los datos proporcionados.
-2. Sé conversacional, útil y conciso. 
-3. Limita tu respuesta a máximo 3 frases ya que esto será convertido en voz.
-4. Si te preguntan sobre datos que no tienes, menciona que solo tienes información sobre gastos en el período indicado.
-5. No presentes grandes cantidades de datos numéricos ya que esto es difícil de seguir en formato de voz.
+1. Analiza detenidamente todos los datos de transacciones proporcionados para responder a la consulta específica.
+2. Utiliza datos precisos y cálculos exactos basados en los datos raw proporcionados.
+3. Sé conversacional, útil y conciso. 
+4. Limita tu respuesta a máximo 3 frases ya que esto será convertido en voz.
+5. Si te preguntan sobre datos que no tienes, menciona que solo tienes información sobre gastos en el período indicado.
 6. Al hablar de cantidades de dinero, redondea a números enteros para facilitar la comprensión.
+7. NO intentes resumir todas las transacciones, solo responde exactamente a lo que pregunta el usuario.
 `;
 
-    // Log prompt for debugging
+    // Log prompt size for debugging
     if (DEBUG_MODE) {
-      console.log('🤖 Prompt for Gemini:', prompt);
+      console.log(`🤖 Prompt size: ${Buffer.byteLength(prompt, 'utf8')} bytes`);
+      console.log('🤖 Sample of prompt:', prompt.substring(0, 500) + '...');
     }
 
-    // Call Gemini API directly using HTTPS instead of the library
+    // Call Gemini API directly using HTTPS
     try {
       const response = await callGeminiAPI(prompt);
       console.log(`🤖 AI Response: "${response}"`);
@@ -446,6 +424,47 @@ Instrucciones:
       return response;
     } catch (geminiError) {
       console.error('❌ Error in Gemini API call:', geminiError);
+      
+      // Check if the error might be due to prompt size
+      if (Buffer.byteLength(prompt, 'utf8') > 100000) { // Arbitrary limit, adjust based on actual Gemini limits
+        console.error('❌ Prompt might be too large:', Buffer.byteLength(prompt, 'utf8'), 'bytes');
+        
+        // Try with a smaller subset of data if available
+        if (recentTransactions.length > 50) {
+          console.log('🔄 Retrying with reduced dataset');
+          
+          // Take most recent 50 transactions
+          const reducedTransactions = recentTransactions
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .slice(0, 50);
+          
+          const reducedPrompt = `
+Eres un asistente financiero personal que analiza gastos de una persona.
+
+DATOS FINANCIEROS DEL USUARIO DE LOS ÚLTIMOS 30 DÍAS (${fechaInicio} a ${fechaFin}):
+NOTA: Debido a limitaciones técnicas, solo mostrando las 50 transacciones más recientes.
+${JSON.stringify(reducedTransactions, null, 2)}
+
+La consulta del usuario es: "${userQuery}"
+
+Instrucciones:
+1. Analiza detenidamente todos los datos de transacciones proporcionados para responder a la consulta específica.
+2. Utiliza datos precisos y cálculos exactos basados en los datos proporcionados.
+3. Sé conversacional, útil y conciso. 
+4. Limita tu respuesta a máximo 3 frases ya que esto será convertido en voz.
+5. Si te preguntan sobre datos que no tienes, menciona que solo tienes información sobre las transacciones más recientes.
+6. Al hablar de cantidades de dinero, redondea a números enteros para facilitar la comprensión.
+`;
+          
+          try {
+            const reducedResponse = await callGeminiAPI(reducedPrompt);
+            return reducedResponse;
+          } catch (reducedError) {
+            console.error('❌ Error with reduced dataset:', reducedError);
+            return "No he podido analizar tus datos financieros en este momento debido a limitaciones técnicas. Por favor, intenta una consulta más específica.";
+          }
+        }
+      }
       
       // Handle different types of Gemini errors
       if (geminiError.message && geminiError.message.includes('UNAUTHENTICATED')) {
