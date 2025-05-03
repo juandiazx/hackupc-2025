@@ -7,6 +7,76 @@ import pandas as pd
 from io import BytesIO, StringIO
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
+FEATURE_COLS = ['amount', 'date', 'category', 'description/merchant']
+
+def classify_expenses(s3_client, data, model_bucket, data_bucket, output_key=None):
+    """
+    Classify expenses using a pre-trained model.
+    
+    Args:
+        data: DataFrame with expense data
+    
+    Returns:
+        list: Classified expenses with predicted labels
+    """
+    def load_joblib(bucket, key):
+        obj = s3_client.get_object(Bucket=bucket, Key=key)
+        return joblib.load(BytesIO(obj['Body'].read()))
+    
+    model        = load_joblib(model_bucket, 'expense_classifier_model.joblib')
+    scaler       = load_joblib(model_bucket, 'expense_scaler.joblib')
+    target_le    = load_joblib(model_bucket, 'expense_target_label_encoder.joblib')
+    category_le  = load_joblib(model_bucket, 'expense_category_label_encoder.joblib')
+    merchant_le  = load_joblib(model_bucket, 'expense_merchant_label_encoder.joblib')
+
+    label_encoders = {
+        'category': category_le,
+        'description/merchant': merchant_le
+    }
+
+    valid_idx = data.dropna(subset=FEATURE_COLS).index
+    X, used_cols, _, _ = preprocess_expense_df_inference(
+        data.loc[valid_idx],
+        FEATURE_COLS,
+        encoders=label_encoders,
+        scaler=scaler
+    )
+
+    # Predict
+    preds_numeric = model.predict(X)
+
+    # Inverse-transform
+    preds_label = target_le.inverse_transform(preds_numeric)
+
+    # Write back only to those rows
+    data.loc[valid_idx, 'predicted_expense_type'] = preds_label
+
+    # Upload the modified DataFrame with predictions if output_key is provided
+    if output_key:
+        out_buf = StringIO()
+        data.to_csv(out_buf, index=False)
+        s3_client.put_object(Bucket=data_bucket, Key=output_key, Body=out_buf.getvalue())
+
+    # return classified expenses as well as the percentage of wants and needs
+    wants_percentage, needs_percentage = get_wants_and_needs_percentages(data)
+    expense_details = []
+    for _, row in data.iterrows():
+        if pd.notna(row.get('predicted_expense_type')):
+            expense_details.append({
+                'amount': float(row['amount']),
+                'date': row['date'],
+                'category': row['category'],
+                'description': row['description/merchant'],
+                'want': row['predicted_expense_type'] == 'want'
+            })
+    
+    # Return the complete response
+    return {
+        'wants': wants_percentage,
+        'needs': needs_percentage,
+        'expenses': expense_details
+    }
+
 def preprocess_expense_df_inference(df, feature_cols, encoders=None, scaler=None):
     """
     Preprocess expense data for inference (prediction) without target column handling.
@@ -95,7 +165,6 @@ def preprocess_expense_df_inference(df, feature_cols, encoders=None, scaler=None
     # Drop NaNs to ensure clean data for prediction
     df.dropna(subset=X_cols_final, inplace=True)
 
-    # Get feature matrix
     X = df[X_cols_final].values
     
     # Apply scaling if scaler provided
@@ -107,95 +176,24 @@ def preprocess_expense_df_inference(df, feature_cols, encoders=None, scaler=None
         
     return X, X_cols_final, new_encoders, new_scaler
 
-def handler(event, context):
-    AWS_ACCESS_KEY_ID     = ""
-    AWS_SECRET_ACCESS_KEY = ""
-    MODEL_BUCKET = 'expenses-classifier-model'
-    DATA_BUCKET  = 'datasets-expenses'
-    CSV_KEY    = 'expenses.csv'
-
-    # Create S3 client with explicit creds
-    session = boto3.Session(
-        aws_access_key_id=AWS_ACCESS_KEY_ID,
-        aws_secret_access_key=AWS_SECRET_ACCESS_KEY
-    )
-    s3 = session.client('s3')
-
-    def load_joblib(bucket, key):
-        obj = s3.get_object(Bucket=bucket, Key=key)
-        return joblib.load(BytesIO(obj['Body'].read()))
-
-    # Load artifacts
-    model        = load_joblib(MODEL_BUCKET, 'expense_classifier_model.joblib')
-    scaler       = load_joblib(MODEL_BUCKET, 'expense_scaler.joblib')
-    target_le    = load_joblib(MODEL_BUCKET, 'expense_target_label_encoder.joblib')
-    category_le  = load_joblib(MODEL_BUCKET, 'expense_category_label_encoder.joblib')
-    merchant_le  = load_joblib(MODEL_BUCKET, 'expense_merchant_label_encoder.joblib')
-
-    label_encoders = {
-        'category': category_le,
-        'description/merchant': merchant_le
-    }
+def get_wants_and_needs_percentages(classified_expenses):
+    """
+    Calculate the percentage of wants and needs in classified expenses.
     
-    try:
-        # Fetch data
-        data_obj = s3.get_object(Bucket=DATA_BUCKET, Key=CSV_KEY)
-        df = pd.read_csv(BytesIO(data_obj['Body'].read()))
-
-        # Preprocess
-        feature_cols = ['amount', 'date', 'category', 'description/merchant']
-        
-        # Then pass this to preprocessing
-        valid_idx = df.dropna(subset=feature_cols).index
-        X, used_cols, _, _ = preprocess_expense_df_inference(
-            df.loc[valid_idx],
-            feature_cols,
-            encoders=label_encoders,
-            scaler=scaler
-        )
-
-        # Predict
-        preds_numeric = model.predict(X)
-
-        # Inverse-transform
-        preds_label = target_le.inverse_transform(preds_numeric)
-
-        # Write back only to those rows
-        df.loc[valid_idx, 'predicted_expense_type'] = preds_label
-
-        # Upload reviewed CSV
-        out_buf = StringIO()
-        df.to_csv(out_buf, index=False)
-        s3.put_object(Bucket=DATA_BUCKET, Key=CSV_KEY, Body=out_buf.getvalue())
-        
-        return {
-            'statusCode': 200,
-            'body': json.dumps({
-                'message': f'Success: uploaded s3://{DATA_BUCKET}/{CSV_KEY}',
-                'predictions_count': len(preds_numeric)
-            })
-        }
+    Args:
+        classified_expenses: DataFrame with classified expenses
     
-    except Exception as e:
-        return {
-            'statusCode': 500,
-            'body': json.dumps({'error': str(e)})
-        }
+    Returns:
+        dict: Percentages of wants and needs
+    """
+    total_expenses = len(classified_expenses)
+    if total_expenses == 0:
+        return {'wants_percentage': 0, 'needs_percentage': 0}
     
-if __name__ == "__main__":
-    # Create a mock event
-    mock_event = {
-        "test": "event"
-    }
-
-# Create a mock context (simplified)
-class MockContext:
-    function_name = "test_function"
-    memory_limit_in_mb = 128
-    aws_request_id = "test_request_id"
-
-mock_context = MockContext()
-
-# Call your handler
-result = handler(mock_event, mock_context)
-print("Lambda Result:", result)
+    wants_count = classified_expenses[classified_expenses['predicted_expense_type'] == 'want'].shape[0]
+    needs_count = classified_expenses[classified_expenses['predicted_expense_type'] == 'need'].shape[0]
+    
+    wants_percentage = (wants_count / total_expenses) * 100
+    needs_percentage = (needs_count / total_expenses) * 100
+    
+    return (round(wants_percentage, 2),round(needs_percentage, 2))
