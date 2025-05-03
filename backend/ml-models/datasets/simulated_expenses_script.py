@@ -19,7 +19,6 @@ categories_merchants = {
     "Education": ["Online Course", "Bookstore", "Workshop Fee"]
 }
 
-# Distribución de gastos típicos por categoría
 amount_ranges = {
     "Groceries": (20, 120),
     "Dining Out": (5, 40),
@@ -33,6 +32,61 @@ amount_ranges = {
     "Education": (15, 250)
 }
 
+def classify_expense(category, merchant):
+    # Default rules
+    need_categories = {"Groceries", "Transportation", "Utilities", "Personal Care", "Health"}
+    want_categories = {"Dining Out", "Shopping", "Entertainment", "Travel"}
+
+    # Fine-grained rules
+    if category == "Education":
+        if merchant in {"Online Course", "Workshop Fee"}:
+            return "need"
+        if merchant == "Bookstore":
+            return "want"  # leisure books, not mandatory
+
+    if category == "Shopping":
+        if merchant == "Bookshop":
+            return "want"  # assumed leisure shopping
+        if merchant == "Online Electronics":
+            return "want"
+        if merchant == "Clothing Store Sale":
+            return "need"  # basic clothing needs
+        if merchant == "Home Decor":
+            return "want"
+
+    if category == "Personal Care":
+        if merchant == "Pharmacy":
+            return "need"
+        else:
+            return "want"
+
+    if category == "Health":
+        return "need"  # All health-related expenses are essential
+
+    if category == "Entertainment":
+        if merchant == "Streaming Service Subscription":
+            return "want"
+        else:
+            return "want"
+
+    if category == "Dining Out":
+        return "want"
+
+    if category == "Groceries":
+        return "need"
+
+    if category == "Transportation":
+        return "need"
+
+    if category == "Utilities":
+        return "need"
+
+    if category == "Travel":
+        return "want"
+
+    # Fallback
+    return "want" if category in want_categories else "need"
+
 def generate_expenses():
     current_date = start_date
     rows = []
@@ -40,10 +94,9 @@ def generate_expenses():
     while current_date <= end_date:
         num_transactions = 0
 
-        # Probabilidad de gastar más fines de semana o en días de pago
         if current_date.weekday() in [5, 6]:  # sábado, domingo
             num_transactions = random.randint(1, 5)
-        elif current_date.day in [1, 15, 30]:  # días típicos de cobro
+        elif current_date.day in [1, 15, 30]:
             num_transactions = random.randint(2, 6)
         else:
             num_transactions = random.choices([0, 1, 2, 3], weights=[0.2, 0.3, 0.3, 0.2])[0]
@@ -52,12 +105,14 @@ def generate_expenses():
             category = random.choice(list(categories_merchants.keys()))
             merchant = random.choice(categories_merchants[category])
             amount = round(random.uniform(*amount_ranges[category]), 2)
+            expense_type = classify_expense(category, merchant)
 
             rows.append({
                 "amount": amount,
                 "date": current_date.strftime("%Y-%m-%d"),
                 "category": category,
-                "description/merchant": merchant
+                "description/merchant": merchant,
+                "expense_type": expense_type
             })
 
         current_date += timedelta(days=1)
