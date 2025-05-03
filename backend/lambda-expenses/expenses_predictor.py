@@ -1,7 +1,7 @@
 import boto3
 import csv
 from io import BytesIO
-import datetime
+from datetime import datetime
 from collections import defaultdict
 import pandas as pd
 import joblib
