@@ -5,7 +5,7 @@ from datetime import datetime
 from collections import defaultdict
 import pandas as pd
 import joblib
-
+from pprint import pprint
 def predict_expenses(s3_client, data, model_bucket):
     """
     Predict expenses using a pre-trained model.
@@ -29,6 +29,8 @@ def predict_expenses(s3_client, data, model_bucket):
     # 📊 Generate snapshot just for today
     snapshot_df = process_expense_data_snapshots(data) #, custom_snapshot_day=current_day
 
+    pprint(snapshot_df)
+
     # 🛑 No data? Avoid crash
     if snapshot_df.empty:
         return {
@@ -42,6 +44,8 @@ def predict_expenses(s3_client, data, model_bucket):
 
     # 🔮 Predict
     final_prediction = float(model.predict(snapshot_df)[0])
+
+    print(final_prediction)
 
     all_expenses = data.to_dict(orient='records')
     current_month_expenses = get_current_month_expenses(all_expenses)
@@ -97,6 +101,7 @@ def process_expense_data_snapshots(df):
 
     # 🧹 Clean & prepare
     df['amount'] = df['amount'].astype(float)
+    df['date'] = pd.to_datetime(df['date'], errors='coerce')
     df['day'] = df['date'].dt.day
     df['month'] = df['date'].dt.month
     df['year'] = df['date'].dt.year
