@@ -1,12 +1,12 @@
 FROM public.ecr.aws/lambda/python:3.12
 
-# Copy code
-COPY expenses_classifier.py ${LAMBDA_TASK_ROOT}
 COPY requirements.txt .
-
-# Install dependencies
 RUN pip install --upgrade pip
-RUN pip install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
+RUN pip install -r requirements.txt
 
-# Command Lambda will use to run your function
-CMD ["expenses_classifier.handler"]
+COPY main.py ./
+COPY utils.py ./
+COPY expenses_classifier.py ./
+COPY expenses_predictor.py ./
+
+CMD ["main.handler"]
