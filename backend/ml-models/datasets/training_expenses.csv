@@ -14,19 +14,19 @@ amount,date,category,description/merchant,expense_type
 13.15,2023-05-06,Personal Care,Pharmacy,need
 99.12,2023-05-06,Entertainment,Concert Venue,want
 125.64,2023-05-07,Health,Gym Membership,need
-200.44,2023-05-07,Education,Bookstore,want
-106.69,2023-05-07,Health,Gym Membership,need
-65.18,2023-05-07,Health,Doctor Visit,need
-14.83,2023-05-07,Dining Out,Lunch Cafe,want
-18.52,2023-05-08,Transportation,Ride Sharing App,need
-14.48,2023-05-08,Transportation,Bus Pass Kiosk,need
-11.73,2023-05-08,Personal Care,Pharmacy,need
-13.0,2023-05-09,Shopping,Clothing Store Sale,need
-133.8,2023-05-10,Utilities,Water Bill,need
-164.18,2023-05-10,Shopping,Home Decor,want
-66.98,2023-05-11,Travel,Hotel Stay,want
-47.77,2023-05-11,Personal Care,Haircut,want
-206.86,2023-05-12,Education,Bookstore,want
+200.44,2023-05-07,Education,Bookstore,need
+106.69,2023-05-07,Health,Gym Membership,want
+65.18,2023-05-07,Health,Doctor Visit,want
+14.83,2023-05-07,Dining Out,Lunch Cafe,need
+18.52,2023-05-08,Transportation,Ride Sharing App,want
+14.48,2023-05-08,Transportation,Bus Pass Kiosk,want
+11.73,2023-05-08,Personal Care,Pharmacy,want
+13.0,2023-05-09,Shopping,Clothing Store Sale,want
+133.8,2023-05-10,Utilities,Water Bill,want
+164.18,2023-05-10,Shopping,Home Decor,need
+66.98,2023-05-11,Travel,Hotel Stay,need
+47.77,2023-05-11,Personal Care,Haircut,need
+206.86,2023-05-12,Education,Bookstore,need
 58.15,2023-05-12,Transportation,Bus Pass Kiosk,need
 114.39,2023-05-13,Health,Doctor Visit,need
 27.83,2023-05-14,Personal Care,Haircut,want

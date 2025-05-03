@@ -1,0 +1,24 @@
+{
+  "name": "alexa-financial-assistant",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Lambda function for Financial Assistant Alexa Skill",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "alexa",
+    "skill",
+    "lambda",
+    "financial",
+    "assistant"
+  ],
+  "author": "Alejandro Rosado",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1435.0",
+    "papaparse": "^5.4.1",
+    "@google/generative-ai": "^0.2.1"
+  }
+}
