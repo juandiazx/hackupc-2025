@@ -5,7 +5,7 @@ from datetime import datetime
 from collections import defaultdict
 import pandas as pd
 import joblib
-from pprint import pprint
+
 def predict_expenses(s3_client, data, model_bucket):
     """
     Predict expenses using a pre-trained model.
@@ -21,36 +21,23 @@ def predict_expenses(s3_client, data, model_bucket):
         return joblib.load(BytesIO(obj['Body'].read()))
 
     model = load_joblib(model_bucket, 'expenses_predictor_model.joblib')
-    #---------------------------------------------------- 
-      # ⏱️ Current date info
-    today = datetime.now()
-    current_day = today.day
 
-    # 📊 Generate snapshot just for today
     snapshot_df = process_expense_data_snapshots(data) #, custom_snapshot_day=current_day
 
-    pprint(snapshot_df)
-
-    # 🛑 No data? Avoid crash
     if snapshot_df.empty:
         return {
             'expensesPerDayCurrentMonth': [],
             'finalMonthPrediction': 0.0
         }
 
-    # 🧮 Drop training-only column
     if 'target_total_expenses' in snapshot_df.columns:
         snapshot_df = snapshot_df.drop(columns=['target_total_expenses'])
 
-    # 🔮 Predict
     final_prediction = float(model.predict(snapshot_df)[0])
-
-    print(final_prediction)
 
     all_expenses = data.to_dict(orient='records')
     current_month_expenses = get_current_month_expenses(all_expenses)
 
-    # Return the complete response
     return {
         'expensesPerDayCurrentMonth': current_month_expenses,
         'finalMonthPrediction': round(final_prediction, 2)
@@ -98,10 +85,10 @@ def get_current_month_expenses(all_expenses):
     return result
 
 def process_expense_data_snapshots(df):
-
-    # 🧹 Clean & prepare
     df['amount'] = df['amount'].astype(float)
     df['date'] = pd.to_datetime(df['date'], errors='coerce')
+    df = df.dropna(subset=['date'])  # Drop invalid dates
+
     df['day'] = df['date'].dt.day
     df['month'] = df['date'].dt.month
     df['year'] = df['date'].dt.year
@@ -111,41 +98,33 @@ def process_expense_data_snapshots(df):
     if 'expense_type' in df.columns:
         df = df.drop(columns=['expense_type'])
 
-    # 🚀 Parameters
-    snapshot_days = [5, 10, 15, 20, 25, 28]
+    today = datetime.now()
+    current_year = today.year
+    current_month = today.month
+    current_day = today.day
     expensive_threshold = 100
 
-    # 🛠️ Function to generate features for each snapshot
-    def generate_snapshots(df, snapshot_days):
-        all_snapshots = []
+    this_month_df = df[
+        (df['year'] == current_year) &
+        (df['month'] == current_month) &
+        (df['day'] <= current_day)
+    ]
 
-        grouped = df.groupby(['year', 'month'])
-        for (year, month), group in grouped:
-            full_month_total = group['amount'].sum()
+    if this_month_df.empty:
+        return pd.DataFrame()
 
-            for day_cutoff in snapshot_days:
-                partial = group[group['day'] <= day_cutoff]
-                if partial.empty:
-                    continue
+    snapshot = {
+        'year': current_year,
+        'month': current_month,
+        'day': current_day,
+        'total_so_far': this_month_df['amount'].sum(),
+        'avg_daily_so_far': this_month_df['amount'].sum() / current_day,
+        'num_expensive_transactions': (this_month_df['amount'] > expensive_threshold).sum(),
+        'num_transactions': this_month_df.shape[0]
+    }
 
-                snapshot = {
-                    'year': year,
-                    'month': month,
-                    'day': day_cutoff,
-                    'total_so_far': partial['amount'].sum(),
-                    'avg_daily_so_far': partial['amount'].sum() / day_cutoff,
-                    'num_expensive_transactions': (partial['amount'] > expensive_threshold).sum(),
-                    'num_transactions': partial.shape[0],
-                    'target_total_expenses': full_month_total
-                }
-                all_snapshots.append(snapshot)
+    # Convert to DataFrame and round
+    snapshot_df = pd.DataFrame([snapshot])
+    snapshot_df[['total_so_far', 'avg_daily_so_far']] = snapshot_df[['total_so_far', 'avg_daily_so_far']].round(2)
 
-        return pd.DataFrame(all_snapshots)
-
-    # ⚙️ Generate feature dataset
-    data = generate_snapshots(df, snapshot_days)
-
-    # 🎯 Round financial values to 2 decimals
-    data[['total_so_far', 'avg_daily_so_far', 'target_total_expenses']] = data[['total_so_far', 'avg_daily_so_far', 'target_total_expenses']].round(2)   
-
-    return data
+    return snapshot_df
