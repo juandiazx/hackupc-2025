@@ -1,54 +1,58 @@
 import boto3
 import csv
-import io
+from io import BytesIO
 import datetime
 from collections import defaultdict
 import pandas as pd
+import joblib
 
-def get_s3_file(bucket_name='expense-data-bucket', file_key='clean_expenses.csv'):
+def predict_expenses(s3_client, data, model_bucket):
     """
-    Fetch a CSV file from an S3 bucket.
+    Predict expenses using a pre-trained model.
     
     Args:
-        bucket_name (str): S3 bucket name
-        file_key (str): File key in the S3 bucket
-        
+        data: DataFrame with expense data
+    
     Returns:
-        str: CSV content as a string
+        list: Predicted expenses with predicted labels
     """
-    s3_client = boto3.client('s3')
-    response = s3_client.get_object(Bucket=bucket_name, Key=file_key)
-    return response['Body'].read().decode('utf-8')
+    def load_joblib(bucket, key):
+        obj = s3_client.get_object(Bucket=bucket, Key=key)
+        return joblib.load(BytesIO(obj['Body'].read()))
 
-def parse_expenses(csv_content):
-    """
-    Parse CSV content and extract expense records.
-    
-    Args:
-        csv_content (str): CSV content as a string
-        
-    Returns:
-        list: List of dictionaries containing expense data
-    """
-    expenses = []
-    csv_reader = csv.DictReader(io.StringIO(csv_content))
-    
-    for row in csv_reader:
-        try:
-            expense = {
-                'amount': float(row['amount']),
-                'date': row['date'],
-                'category': row['category'],
-                'description': row['description/merchant'],
-                'expense_type': row['expense_type']
-            }
-            expenses.append(expense)
-        except (ValueError, KeyError) as e:
-            print(f"Error parsing row: {row}, Error: {str(e)}")
-    
-    return expenses
+    model = load_joblib(model_bucket, 'expenses_predictor_model.joblib')
+    #---------------------------------------------------- 
+      # ⏱️ Current date info
+    today = datetime.now()
+    current_day = today.day
 
-def get_current_month_expenses():
+    # 📊 Generate snapshot just for today
+    snapshot_df = process_expense_data_snapshots(data, custom_snapshot_day=current_day)
+
+    # 🛑 No data? Avoid crash
+    if snapshot_df.empty:
+        return {
+            'expensesPerDayCurrentMonth': [],
+            'finalMonthPrediction': 0.0
+        }
+
+    # 🧮 Drop training-only column
+    if 'target_total_expenses' in snapshot_df.columns:
+        snapshot_df = snapshot_df.drop(columns=['target_total_expenses'])
+
+    # 🔮 Predict
+    final_prediction = float(model.predict(snapshot_df)[0])
+
+    all_expenses = data.to_dict(orient='records')
+    current_month_expenses = get_current_month_expenses(all_expenses)
+
+    # Return the complete response
+    return {
+        'expensesPerDayCurrentMonth': current_month_expenses,
+        'finalMonthPrediction': round(final_prediction, 2)
+    }
+
+def get_current_month_expenses(all_expenses):
     """
     Process expenses for the current month and calculate cumulative totals per day.
     
@@ -56,27 +60,22 @@ def get_current_month_expenses():
         list: Daily expense totals for the current month
     """
     # Get current date
-    today = datetime.datetime.now()
+    today = datetime.now()
     current_month = today.month
     current_year = today.year
-    
-    # Fetch and parse expense data
-    csv_content = get_s3_file()
-    all_expenses = parse_expenses(csv_content)
     
     # Filter expenses for current month
     current_month_expenses = [
         expense for expense in all_expenses
-        if datetime.datetime.strptime(expense['date'], '%Y-%m-%d').month == current_month
-        and datetime.datetime.strptime(expense['date'], '%Y-%m-%d').year == current_year
-        and datetime.datetime.strptime(expense['date'], '%Y-%m-%d').date() <= today.date()
+        if expense['date'].month == current_month
+        and expense['date'].year == current_year
+        and expense['date'].date() <= today.date()
     ]
     
     # Group expenses by day
     daily_totals = defaultdict(float)
     for expense in current_month_expenses:
-        expense_date = datetime.datetime.strptime(expense['date'], '%Y-%m-%d')
-        day = expense_date.day
+        day = expense['date'].day
         daily_totals[day] += expense['amount']
     
     # Calculate cumulative totals
@@ -94,9 +93,7 @@ def get_current_month_expenses():
     
     return result
 
-#List[Dict[str, Any]]
-def process_expense_data_snapshots(expenses):
-    df = pd.DataFrame(expenses) 
+def process_expense_data_snapshots(df):
 
     # 🧹 Clean & prepare
     df['amount'] = df['amount'].astype(float)

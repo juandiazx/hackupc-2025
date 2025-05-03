@@ -3,7 +3,7 @@ import json
 
 mock_event = {
     "queryStringParameters": {
-        "action": "classify-expenses"
+        "action": "predict-expenses"
     }
 }
 mock_context = {}
