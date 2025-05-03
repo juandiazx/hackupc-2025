@@ -112,8 +112,7 @@ def handler(event, context):
     AWS_SECRET_ACCESS_KEY = ""
     MODEL_BUCKET = 'expenses-classifier-model'
     DATA_BUCKET  = 'datasets-expenses'
-    INPUT_KEY    = 'clean_expenses.csv'
-    OUTPUT_KEY   = 'reviewed_expenses.csv'
+    CSV_KEY    = 'expenses.csv'
 
     # Create S3 client with explicit creds
     session = boto3.Session(
@@ -140,7 +139,7 @@ def handler(event, context):
     
     try:
         # Fetch data
-        data_obj = s3.get_object(Bucket=DATA_BUCKET, Key=INPUT_KEY)
+        data_obj = s3.get_object(Bucket=DATA_BUCKET, Key=CSV_KEY)
         df = pd.read_csv(BytesIO(data_obj['Body'].read()))
 
         # Preprocess
@@ -167,12 +166,12 @@ def handler(event, context):
         # Upload reviewed CSV
         out_buf = StringIO()
         df.to_csv(out_buf, index=False)
-        s3.put_object(Bucket=DATA_BUCKET, Key=OUTPUT_KEY, Body=out_buf.getvalue())
+        s3.put_object(Bucket=DATA_BUCKET, Key=CSV_KEY, Body=out_buf.getvalue())
         
         return {
             'statusCode': 200,
             'body': json.dumps({
-                'message': f'Success: uploaded s3://{DATA_BUCKET}/{OUTPUT_KEY}',
+                'message': f'Success: uploaded s3://{DATA_BUCKET}/{CSV_KEY}',
                 'predictions_count': len(preds_numeric)
             })
         }
