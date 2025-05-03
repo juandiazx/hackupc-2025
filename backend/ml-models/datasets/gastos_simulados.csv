@@ -1,0 +1,1571 @@
+amount,date,category,description/merchant,expense_type
+283.45,2023-05-01,Travel,Flight Booking,want
+394.58,2023-05-01,Travel,Hotel Stay,want
+26.8,2023-05-01,Dining Out,Fast Food Z,want
+227.82,2023-05-01,Travel,Hotel Stay,want
+215.71,2023-05-02,Education,Bookstore,want
+38.34,2023-05-03,Dining Out,Sushi Bar,want
+23.1,2023-05-03,Transportation,Petrol Station,need
+16.61,2023-05-03,Dining Out,Sushi Bar,want
+61.75,2023-05-04,Utilities,Internet Provider,need
+139.99,2023-05-04,Utilities,Water Bill,need
+146.01,2023-05-05,Shopping,Clothing Store Sale,need
+66.75,2023-05-06,Groceries,Grocery Store B,need
+407.53,2023-05-07,Travel,Train Ticket,want
+186.87,2023-05-07,Education,Workshop Fee,need
+18.33,2023-05-08,Transportation,Ride Sharing App,need
+52.6,2023-05-08,Utilities,Internet Provider,need
+70.61,2023-05-09,Utilities,Water Bill,need
+11.33,2023-05-09,Dining Out,Sushi Bar,want
+44.98,2023-05-09,Utilities,Internet Provider,need
+33.03,2023-05-11,Entertainment,Cinema Tickets,want
+126.38,2023-05-11,Shopping,Clothing Store Sale,need
+82.66,2023-05-12,Entertainment,Streaming Service Subscription,want
+45.07,2023-05-12,Shopping,Clothing Store Sale,need
+33.99,2023-05-13,Education,Bookstore,want
+43.58,2023-05-13,Entertainment,Cinema Tickets,want
+42.71,2023-05-13,Health,Doctor Visit,need
+61.71,2023-05-13,Entertainment,Concert Venue,want
+13.16,2023-05-14,Shopping,Home Decor,want
+117.87,2023-05-15,Groceries,Grocery Store B,need
+381.53,2023-05-15,Travel,Hotel Stay,want
+133.45,2023-05-16,Utilities,Electricity Bill,need
+243.88,2023-05-16,Education,Bookstore,want
+133.64,2023-05-17,Utilities,Water Bill,need
+358.42,2023-05-18,Travel,Hotel Stay,want
+40.26,2023-05-19,Health,Gym Membership,need
+44.18,2023-05-19,Entertainment,Streaming Service Subscription,want
+116.06,2023-05-20,Health,Doctor Visit,need
+34.91,2023-05-20,Personal Care,Haircut,want
+29.56,2023-05-20,Dining Out,Lunch Cafe,want
+311.12,2023-05-21,Travel,Hotel Stay,want
+59.06,2023-05-21,Transportation,Ride Sharing App,need
+103.85,2023-05-22,Travel,Flight Booking,want
+117.72,2023-05-22,Utilities,Internet Provider,need
+94.29,2023-05-24,Travel,Flight Booking,want
+76.04,2023-05-24,Personal Care,Haircut,want
+110.91,2023-05-24,Groceries,Supermarket A,need
+32.81,2023-05-25,Dining Out,Coffee Shop Downtown,want
+31.49,2023-05-26,Health,Therapy Session,need
+34.18,2023-05-26,Personal Care,Spa Center,want
+60.84,2023-05-27,Utilities,Internet Provider,need
+80.04,2023-05-27,Utilities,Water Bill,need
+172.31,2023-05-27,Shopping,Bookshop,want
+43.46,2023-05-28,Personal Care,Spa Center,want
+29.38,2023-05-29,Transportation,Bus Pass Kiosk,need
+26.99,2023-05-29,Groceries,Local Supermarket,need
+65.56,2023-05-30,Groceries,Local Supermarket,need
+22.21,2023-05-30,Shopping,Bookshop,want
+103.42,2023-05-30,Groceries,Grocery Store B,need
+10.43,2023-06-01,Entertainment,Concert Venue,want
+38.0,2023-06-01,Dining Out,Fast Food Z,want
+108.72,2023-06-01,Education,Bookstore,want
+319.84,2023-06-01,Travel,Flight Booking,want
+210.99,2023-06-01,Education,Online Course,need
+79.81,2023-06-02,Personal Care,Spa Center,want
+141.48,2023-06-03,Utilities,Water Bill,need
+71.75,2023-06-04,Education,Online Course,need
+72.03,2023-06-04,Education,Bookstore,want
+33.35,2023-06-04,Dining Out,Fast Food Z,want
+73.88,2023-06-04,Groceries,Supermarket A,need
+37.04,2023-06-04,Education,Bookstore,want
+66.34,2023-06-06,Personal Care,Spa Center,want
+157.29,2023-06-07,Education,Online Course,need
+41.19,2023-06-07,Utilities,Internet Provider,need
+32.78,2023-06-07,Transportation,Petrol Station,need
+18.69,2023-06-08,Dining Out,Lunch Cafe,want
+89.56,2023-06-09,Utilities,Water Bill,need
+64.81,2023-06-09,Groceries,Local Supermarket,need
+66.36,2023-06-10,Utilities,Internet Provider,need
+27.76,2023-06-10,Education,Workshop Fee,need
+112.29,2023-06-10,Utilities,Water Bill,need
+227.59,2023-06-11,Travel,Flight Booking,want
+76.43,2023-06-11,Utilities,Water Bill,need
+57.26,2023-06-11,Health,Therapy Session,need
+31.13,2023-06-11,Entertainment,Concert Venue,want
+143.05,2023-06-12,Education,Workshop Fee,need
+65.72,2023-06-13,Utilities,Electricity Bill,need
+241.76,2023-06-14,Education,Workshop Fee,need
+36.96,2023-06-14,Entertainment,Cinema Tickets,want
+352.49,2023-06-14,Travel,Flight Booking,want
+62.28,2023-06-15,Education,Workshop Fee,need
+131.37,2023-06-15,Education,Workshop Fee,need
+378.02,2023-06-15,Travel,Hotel Stay,want
+203.0,2023-06-16,Travel,Train Ticket,want
+30.0,2023-06-16,Education,Online Course,need
+40.12,2023-06-17,Personal Care,Haircut,want
+32.26,2023-06-17,Transportation,Petrol Station,need
+11.74,2023-06-18,Entertainment,Cinema Tickets,want
+82.24,2023-06-18,Health,Doctor Visit,need
+11.74,2023-06-19,Personal Care,Pharmacy,need
+14.09,2023-06-20,Dining Out,Coffee Shop Downtown,want
+25.96,2023-06-20,Dining Out,Fast Food Z,want
+63.88,2023-06-21,Entertainment,Concert Venue,want
+30.0,2023-06-22,Entertainment,Cinema Tickets,want
+190.34,2023-06-22,Education,Workshop Fee,need
+25.7,2023-06-23,Transportation,Petrol Station,need
+149.21,2023-06-24,Shopping,Clothing Store Sale,need
+171.64,2023-06-25,Education,Workshop Fee,need
+45.06,2023-06-25,Education,Online Course,need
+130.3,2023-06-26,Education,Online Course,need
+274.83,2023-06-26,Travel,Train Ticket,want
+25.09,2023-06-27,Groceries,Supermarket A,need
+139.34,2023-06-27,Health,Doctor Visit,need
+109.22,2023-06-28,Education,Bookstore,want
+11.21,2023-06-28,Personal Care,Haircut,want
+176.13,2023-06-29,Shopping,Home Decor,want
+95.79,2023-06-29,Groceries,Grocery Store B,need
+129.29,2023-06-30,Health,Gym Membership,need
+22.25,2023-06-30,Health,Gym Membership,need
+24.57,2023-07-01,Entertainment,Cinema Tickets,want
+34.6,2023-07-01,Dining Out,Lunch Cafe,want
+144.99,2023-07-02,Health,Gym Membership,need
+13.51,2023-07-02,Personal Care,Pharmacy,need
+38.51,2023-07-03,Dining Out,Coffee Shop Downtown,want
+29.18,2023-07-03,Transportation,Ride Sharing App,need
+18.65,2023-07-06,Entertainment,Streaming Service Subscription,want
+46.24,2023-07-06,Transportation,Bus Pass Kiosk,need
+44.84,2023-07-07,Personal Care,Haircut,want
+9.42,2023-07-08,Personal Care,Haircut,want
+49.0,2023-07-08,Utilities,Electricity Bill,need
+87.74,2023-07-08,Entertainment,Cinema Tickets,want
+194.99,2023-07-09,Education,Workshop Fee,need
+70.62,2023-07-10,Education,Bookstore,want
+223.8,2023-07-10,Travel,Hotel Stay,want
+116.96,2023-07-11,Education,Bookstore,want
+63.29,2023-07-11,Personal Care,Pharmacy,need
+20.81,2023-07-12,Shopping,Home Decor,want
+72.3,2023-07-15,Health,Gym Membership,need
+15.93,2023-07-15,Personal Care,Pharmacy,need
+10.11,2023-07-15,Transportation,Petrol Station,need
+42.2,2023-07-15,Personal Care,Pharmacy,need
+83.92,2023-07-16,Health,Therapy Session,need
+38.56,2023-07-16,Dining Out,Coffee Shop Downtown,want
+89.36,2023-07-16,Utilities,Electricity Bill,need
+5.05,2023-07-16,Dining Out,Pizzeria Bella,want
+141.24,2023-07-17,Health,Doctor Visit,need
+172.89,2023-07-18,Education,Bookstore,want
+82.8,2023-07-19,Groceries,Grocery Store B,need
+189.3,2023-07-19,Education,Online Course,need
+69.97,2023-07-20,Shopping,Bookshop,want
+43.68,2023-07-20,Personal Care,Pharmacy,need
+88.63,2023-07-21,Entertainment,Streaming Service Subscription,want
+203.03,2023-07-22,Education,Bookstore,want
+37.51,2023-07-22,Dining Out,Sushi Bar,want
+133.62,2023-07-22,Utilities,Internet Provider,need
+11.52,2023-07-22,Personal Care,Pharmacy,need
+70.92,2023-07-22,Personal Care,Spa Center,want
+44.73,2023-07-23,Entertainment,Concert Venue,want
+82.23,2023-07-23,Entertainment,Cinema Tickets,want
+58.48,2023-07-23,Groceries,Local Supermarket,need
+128.06,2023-07-23,Utilities,Electricity Bill,need
+139.06,2023-07-23,Health,Gym Membership,need
+10.56,2023-07-25,Dining Out,Lunch Cafe,want
+234.1,2023-07-25,Travel,Flight Booking,want
+71.69,2023-07-26,Groceries,Grocery Store B,need
+63.64,2023-07-27,Personal Care,Spa Center,want
+47.77,2023-07-27,Personal Care,Spa Center,want
+143.75,2023-07-28,Utilities,Internet Provider,need
+468.82,2023-07-28,Travel,Flight Booking,want
+35.38,2023-07-29,Personal Care,Spa Center,want
+28.59,2023-07-29,Dining Out,Sushi Bar,want
+134.53,2023-07-29,Health,Doctor Visit,need
+44.41,2023-07-29,Entertainment,Streaming Service Subscription,want
+230.85,2023-07-30,Travel,Hotel Stay,want
+29.48,2023-07-30,Health,Gym Membership,need
+92.39,2023-07-31,Health,Gym Membership,need
+191.49,2023-08-01,Shopping,Online Electronics,want
+167.21,2023-08-01,Travel,Flight Booking,want
+43.11,2023-08-01,Education,Online Course,need
+179.21,2023-08-01,Travel,Flight Booking,want
+244.16,2023-08-01,Travel,Train Ticket,want
+82.21,2023-08-02,Entertainment,Concert Venue,want
+33.53,2023-08-02,Dining Out,Sushi Bar,want
+177.33,2023-08-03,Shopping,Online Electronics,want
+51.54,2023-08-03,Entertainment,Concert Venue,want
+74.26,2023-08-05,Personal Care,Pharmacy,need
+117.84,2023-08-05,Groceries,Grocery Store B,need
+117.41,2023-08-05,Education,Online Course,need
+15.38,2023-08-05,Transportation,Bus Pass Kiosk,need
+41.0,2023-08-06,Groceries,Supermarket A,need
+140.71,2023-08-06,Utilities,Electricity Bill,need
+65.03,2023-08-06,Entertainment,Streaming Service Subscription,want
+197.93,2023-08-08,Shopping,Bookshop,want
+63.48,2023-08-09,Groceries,Grocery Store B,need
+6.72,2023-08-11,Dining Out,Sushi Bar,want
+58.48,2023-08-11,Entertainment,Streaming Service Subscription,want
+102.5,2023-08-12,Utilities,Water Bill,need
+24.97,2023-08-12,Personal Care,Spa Center,want
+53.69,2023-08-12,Health,Gym Membership,need
+122.54,2023-08-12,Utilities,Internet Provider,need
+48.57,2023-08-13,Transportation,Bus Pass Kiosk,need
+20.63,2023-08-13,Dining Out,Sushi Bar,want
+84.62,2023-08-13,Education,Online Course,need
+87.42,2023-08-13,Groceries,Grocery Store B,need
+82.4,2023-08-14,Entertainment,Concert Venue,want
+69.84,2023-08-15,Entertainment,Cinema Tickets,want
+11.15,2023-08-15,Transportation,Ride Sharing App,need
+88.37,2023-08-16,Health,Gym Membership,need
+31.81,2023-08-16,Health,Doctor Visit,need
+20.59,2023-08-17,Transportation,Ride Sharing App,need
+52.15,2023-08-17,Entertainment,Concert Venue,want
+92.27,2023-08-19,Travel,Hotel Stay,want
+89.82,2023-08-19,Health,Therapy Session,need
+112.7,2023-08-19,Utilities,Electricity Bill,need
+86.72,2023-08-19,Shopping,Online Electronics,want
+149.11,2023-08-19,Health,Gym Membership,need
+44.85,2023-08-20,Health,Doctor Visit,need
+52.19,2023-08-20,Personal Care,Spa Center,want
+50.77,2023-08-20,Transportation,Bus Pass Kiosk,need
+59.32,2023-08-20,Entertainment,Concert Venue,want
+24.69,2023-08-20,Dining Out,Fast Food Z,want
+59.44,2023-08-21,Groceries,Grocery Store B,need
+15.83,2023-08-21,Personal Care,Haircut,want
+25.87,2023-08-22,Personal Care,Pharmacy,need
+35.25,2023-08-22,Education,Online Course,need
+63.93,2023-08-23,Utilities,Internet Provider,need
+118.86,2023-08-23,Groceries,Supermarket A,need
+13.75,2023-08-26,Personal Care,Haircut,want
+35.65,2023-08-26,Health,Therapy Session,need
+7.77,2023-08-26,Dining Out,Fast Food Z,want
+39.08,2023-08-26,Groceries,Supermarket A,need
+78.47,2023-08-27,Entertainment,Concert Venue,want
+60.83,2023-08-27,Shopping,Online Electronics,want
+72.16,2023-08-27,Entertainment,Concert Venue,want
+120.35,2023-08-27,Education,Bookstore,want
+454.52,2023-08-28,Travel,Flight Booking,want
+12.26,2023-08-28,Shopping,Home Decor,want
+40.42,2023-08-29,Groceries,Grocery Store B,need
+79.71,2023-08-29,Health,Doctor Visit,need
+86.91,2023-08-30,Shopping,Home Decor,want
+56.62,2023-08-30,Personal Care,Haircut,want
+139.0,2023-08-30,Shopping,Bookshop,want
+81.0,2023-08-31,Entertainment,Concert Venue,want
+38.13,2023-08-31,Shopping,Online Electronics,want
+77.94,2023-09-01,Entertainment,Streaming Service Subscription,want
+51.97,2023-09-01,Travel,Train Ticket,want
+180.24,2023-09-02,Travel,Train Ticket,want
+12.94,2023-09-02,Shopping,Online Electronics,want
+28.97,2023-09-03,Groceries,Local Supermarket,need
+232.72,2023-09-03,Education,Workshop Fee,need
+46.68,2023-09-04,Transportation,Petrol Station,need
+80.39,2023-09-05,Health,Gym Membership,need
+22.97,2023-09-06,Health,Doctor Visit,need
+39.41,2023-09-06,Transportation,Petrol Station,need
+213.04,2023-09-06,Travel,Flight Booking,want
+81.74,2023-09-08,Health,Gym Membership,need
+11.93,2023-09-08,Entertainment,Concert Venue,want
+22.26,2023-09-09,Shopping,Bookshop,want
+61.14,2023-09-09,Education,Workshop Fee,need
+39.93,2023-09-09,Utilities,Internet Provider,need
+67.94,2023-09-10,Personal Care,Spa Center,want
+46.36,2023-09-13,Health,Doctor Visit,need
+56.55,2023-09-13,Shopping,Clothing Store Sale,need
+15.0,2023-09-13,Entertainment,Cinema Tickets,want
+137.72,2023-09-14,Shopping,Bookshop,want
+39.41,2023-09-15,Education,Online Course,need
+45.63,2023-09-15,Education,Online Course,need
+82.51,2023-09-16,Shopping,Home Decor,want
+119.54,2023-09-16,Health,Doctor Visit,need
+77.22,2023-09-16,Utilities,Water Bill,need
+24.05,2023-09-17,Entertainment,Streaming Service Subscription,want
+87.52,2023-09-17,Travel,Hotel Stay,want
+44.7,2023-09-18,Education,Bookstore,want
+19.86,2023-09-18,Dining Out,Fast Food Z,want
+96.06,2023-09-18,Shopping,Online Electronics,want
+90.3,2023-09-20,Entertainment,Cinema Tickets,want
+65.67,2023-09-20,Personal Care,Pharmacy,need
+84.99,2023-09-20,Groceries,Grocery Store B,need
+101.46,2023-09-21,Utilities,Internet Provider,need
+106.78,2023-09-21,Travel,Train Ticket,want
+5.82,2023-09-22,Dining Out,Lunch Cafe,want
+66.78,2023-09-22,Shopping,Bookshop,want
+137.13,2023-09-23,Shopping,Bookshop,want
+27.04,2023-09-23,Transportation,Ride Sharing App,need
+18.51,2023-09-23,Personal Care,Haircut,want
+59.96,2023-09-23,Personal Care,Pharmacy,need
+28.73,2023-09-24,Personal Care,Haircut,want
+75.86,2023-09-24,Personal Care,Pharmacy,need
+50.5,2023-09-24,Personal Care,Haircut,want
+103.3,2023-09-24,Shopping,Online Electronics,want
+138.03,2023-09-24,Health,Therapy Session,need
+292.78,2023-09-26,Travel,Flight Booking,want
+433.08,2023-09-26,Travel,Train Ticket,want
+49.03,2023-09-28,Entertainment,Streaming Service Subscription,want
+175.0,2023-09-29,Travel,Train Ticket,want
+110.15,2023-09-29,Groceries,Grocery Store B,need
+14.21,2023-09-30,Shopping,Home Decor,want
+132.7,2023-10-01,Education,Workshop Fee,need
+396.99,2023-10-02,Travel,Train Ticket,want
+64.27,2023-10-02,Personal Care,Haircut,want
+58.72,2023-10-02,Transportation,Ride Sharing App,need
+90.28,2023-10-03,Health,Gym Membership,need
+36.41,2023-10-04,Dining Out,Pizzeria Bella,want
+81.79,2023-10-05,Health,Gym Membership,need
+14.19,2023-10-05,Shopping,Bookshop,want
+109.56,2023-10-06,Groceries,Grocery Store B,need
+19.18,2023-10-06,Entertainment,Cinema Tickets,want
+57.22,2023-10-07,Groceries,Local Supermarket,need
+139.79,2023-10-07,Utilities,Water Bill,need
+154.37,2023-10-07,Education,Workshop Fee,need
+31.17,2023-10-08,Utilities,Water Bill,need
+9.76,2023-10-08,Personal Care,Haircut,want
+122.61,2023-10-10,Education,Online Course,need
+95.26,2023-10-11,Utilities,Water Bill,need
+204.3,2023-10-11,Education,Online Course,need
+139.89,2023-10-11,Education,Online Course,need
+20.72,2023-10-13,Personal Care,Spa Center,want
+16.83,2023-10-14,Entertainment,Concert Venue,want
+7.81,2023-10-14,Dining Out,Fast Food Z,want
+105.91,2023-10-14,Health,Therapy Session,need
+104.38,2023-10-14,Travel,Hotel Stay,want
+71.55,2023-10-14,Utilities,Internet Provider,need
+48.68,2023-10-15,Shopping,Home Decor,want
+77.49,2023-10-15,Groceries,Supermarket A,need
+33.16,2023-10-15,Health,Therapy Session,need
+20.55,2023-10-15,Health,Gym Membership,need
+33.73,2023-10-16,Education,Bookstore,want
+107.35,2023-10-16,Utilities,Internet Provider,need
+69.15,2023-10-17,Entertainment,Cinema Tickets,want
+41.54,2023-10-17,Health,Doctor Visit,need
+19.16,2023-10-18,Personal Care,Spa Center,want
+172.68,2023-10-18,Shopping,Bookshop,want
+74.97,2023-10-20,Shopping,Online Electronics,want
+55.81,2023-10-21,Transportation,Petrol Station,need
+31.23,2023-10-21,Transportation,Petrol Station,need
+20.25,2023-10-22,Shopping,Home Decor,want
+22.86,2023-10-22,Transportation,Ride Sharing App,need
+33.99,2023-10-23,Personal Care,Pharmacy,need
+53.9,2023-10-24,Shopping,Bookshop,want
+230.94,2023-10-25,Education,Workshop Fee,need
+99.66,2023-10-26,Travel,Train Ticket,want
+28.58,2023-10-26,Transportation,Petrol Station,need
+22.11,2023-10-27,Health,Therapy Session,need
+379.62,2023-10-28,Travel,Flight Booking,want
+35.9,2023-10-28,Dining Out,Sushi Bar,want
+24.41,2023-10-28,Health,Doctor Visit,need
+50.13,2023-10-28,Utilities,Electricity Bill,need
+94.52,2023-10-29,Travel,Hotel Stay,want
+43.74,2023-10-29,Personal Care,Pharmacy,need
+175.85,2023-10-29,Education,Online Course,need
+12.53,2023-10-29,Transportation,Bus Pass Kiosk,need
+20.62,2023-10-29,Dining Out,Pizzeria Bella,want
+146.44,2023-10-30,Health,Gym Membership,need
+25.76,2023-10-30,Dining Out,Coffee Shop Downtown,want
+87.85,2023-10-30,Entertainment,Streaming Service Subscription,want
+14.35,2023-10-30,Dining Out,Coffee Shop Downtown,want
+24.89,2023-10-30,Transportation,Petrol Station,need
+46.54,2023-10-30,Personal Care,Pharmacy,need
+34.48,2023-11-01,Dining Out,Lunch Cafe,want
+54.58,2023-11-01,Shopping,Bookshop,want
+83.11,2023-11-01,Groceries,Local Supermarket,need
+55.58,2023-11-01,Groceries,Local Supermarket,need
+33.73,2023-11-02,Dining Out,Coffee Shop Downtown,want
+88.45,2023-11-02,Utilities,Electricity Bill,need
+74.32,2023-11-02,Personal Care,Spa Center,want
+47.93,2023-11-03,Personal Care,Haircut,want
+52.21,2023-11-04,Personal Care,Pharmacy,need
+25.68,2023-11-04,Dining Out,Pizzeria Bella,want
+14.53,2023-11-04,Transportation,Ride Sharing App,need
+254.69,2023-11-04,Travel,Train Ticket,want
+296.89,2023-11-04,Travel,Hotel Stay,want
+23.91,2023-11-05,Dining Out,Pizzeria Bella,want
+99.55,2023-11-05,Groceries,Supermarket A,need
+86.84,2023-11-05,Shopping,Home Decor,want
+29.77,2023-11-05,Dining Out,Sushi Bar,want
+85.65,2023-11-06,Health,Gym Membership,need
+131.91,2023-11-07,Utilities,Electricity Bill,need
+147.93,2023-11-07,Shopping,Clothing Store Sale,need
+151.27,2023-11-09,Education,Bookstore,want
+98.7,2023-11-11,Health,Therapy Session,need
+89.18,2023-11-11,Health,Doctor Visit,need
+123.14,2023-11-11,Health,Gym Membership,need
+132.05,2023-11-11,Health,Gym Membership,need
+125.84,2023-11-11,Education,Bookstore,want
+12.3,2023-11-12,Dining Out,Pizzeria Bella,want
+349.4,2023-11-13,Travel,Flight Booking,want
+40.51,2023-11-14,Shopping,Bookshop,want
+53.35,2023-11-14,Transportation,Bus Pass Kiosk,need
+129.05,2023-11-15,Utilities,Water Bill,need
+146.91,2023-11-15,Utilities,Electricity Bill,need
+121.63,2023-11-15,Health,Therapy Session,need
+425.97,2023-11-15,Travel,Flight Booking,want
+181.81,2023-11-16,Travel,Hotel Stay,want
+82.54,2023-11-16,Entertainment,Concert Venue,want
+114.03,2023-11-17,Groceries,Local Supermarket,need
+63.24,2023-11-17,Education,Bookstore,want
+31.37,2023-11-17,Health,Doctor Visit,need
+71.31,2023-11-18,Utilities,Water Bill,need
+170.91,2023-11-19,Shopping,Online Electronics,want
+55.97,2023-11-19,Transportation,Petrol Station,need
+89.26,2023-11-19,Shopping,Clothing Store Sale,need
+77.04,2023-11-20,Groceries,Grocery Store B,need
+359.38,2023-11-20,Travel,Hotel Stay,want
+115.01,2023-11-20,Health,Doctor Visit,need
+99.94,2023-11-21,Entertainment,Concert Venue,want
+150.32,2023-11-21,Shopping,Bookshop,want
+29.34,2023-11-22,Dining Out,Coffee Shop Downtown,want
+78.22,2023-11-22,Utilities,Internet Provider,need
+62.35,2023-11-23,Personal Care,Pharmacy,need
+99.48,2023-11-24,Entertainment,Concert Venue,want
+77.41,2023-11-24,Utilities,Internet Provider,need
+34.31,2023-11-25,Entertainment,Cinema Tickets,want
+11.85,2023-11-25,Shopping,Home Decor,want
+61.16,2023-11-25,Entertainment,Streaming Service Subscription,want
+139.7,2023-11-25,Health,Doctor Visit,need
+45.5,2023-11-26,Groceries,Supermarket A,need
+94.02,2023-11-26,Utilities,Water Bill,need
+63.33,2023-11-27,Entertainment,Streaming Service Subscription,want
+67.85,2023-11-28,Groceries,Grocery Store B,need
+74.83,2023-11-28,Groceries,Supermarket A,need
+201.03,2023-11-28,Education,Online Course,need
+34.39,2023-11-29,Personal Care,Haircut,want
+188.38,2023-11-30,Travel,Flight Booking,want
+57.77,2023-11-30,Groceries,Grocery Store B,need
+10.23,2023-11-30,Dining Out,Coffee Shop Downtown,want
+17.57,2023-11-30,Personal Care,Spa Center,want
+77.3,2023-12-01,Entertainment,Streaming Service Subscription,want
+268.33,2023-12-01,Travel,Flight Booking,want
+158.91,2023-12-01,Travel,Train Ticket,want
+34.45,2023-12-01,Entertainment,Cinema Tickets,want
+32.36,2023-12-01,Entertainment,Concert Venue,want
+5.37,2023-12-01,Dining Out,Lunch Cafe,want
+90.27,2023-12-02,Education,Online Course,need
+442.14,2023-12-02,Travel,Flight Booking,want
+58.95,2023-12-02,Transportation,Petrol Station,need
+7.11,2023-12-02,Dining Out,Lunch Cafe,want
+47.2,2023-12-02,Education,Bookstore,want
+34.74,2023-12-03,Entertainment,Streaming Service Subscription,want
+42.2,2023-12-03,Entertainment,Concert Venue,want
+222.84,2023-12-03,Education,Online Course,need
+44.17,2023-12-03,Health,Doctor Visit,need
+53.13,2023-12-04,Personal Care,Pharmacy,need
+34.23,2023-12-06,Personal Care,Pharmacy,need
+94.83,2023-12-06,Groceries,Local Supermarket,need
+10.19,2023-12-06,Dining Out,Coffee Shop Downtown,want
+56.38,2023-12-07,Utilities,Electricity Bill,need
+158.18,2023-12-08,Shopping,Bookshop,want
+192.7,2023-12-08,Education,Bookstore,want
+79.48,2023-12-08,Personal Care,Haircut,want
+41.21,2023-12-09,Personal Care,Pharmacy,need
+32.73,2023-12-10,Dining Out,Lunch Cafe,want
+34.62,2023-12-10,Transportation,Bus Pass Kiosk,need
+36.3,2023-12-10,Transportation,Ride Sharing App,need
+92.29,2023-12-10,Groceries,Local Supermarket,need
+53.75,2023-12-11,Shopping,Online Electronics,want
+27.36,2023-12-11,Groceries,Grocery Store B,need
+20.99,2023-12-12,Dining Out,Fast Food Z,want
+36.08,2023-12-13,Transportation,Ride Sharing App,need
+18.88,2023-12-14,Education,Online Course,need
+33.7,2023-12-15,Entertainment,Streaming Service Subscription,want
+37.26,2023-12-15,Shopping,Online Electronics,want
+19.09,2023-12-16,Shopping,Online Electronics,want
+79.09,2023-12-16,Entertainment,Streaming Service Subscription,want
+49.13,2023-12-16,Groceries,Supermarket A,need
+72.2,2023-12-16,Groceries,Supermarket A,need
+201.41,2023-12-17,Travel,Train Ticket,want
+34.01,2023-12-18,Personal Care,Haircut,want
+22.29,2023-12-18,Dining Out,Pizzeria Bella,want
+25.69,2023-12-18,Shopping,Bookshop,want
+90.84,2023-12-19,Shopping,Bookshop,want
+88.05,2023-12-21,Health,Gym Membership,need
+61.11,2023-12-21,Shopping,Clothing Store Sale,need
+66.15,2023-12-23,Education,Workshop Fee,need
+87.01,2023-12-24,Shopping,Clothing Store Sale,need
+21.18,2023-12-24,Shopping,Online Electronics,want
+43.96,2023-12-24,Utilities,Water Bill,need
+425.66,2023-12-24,Travel,Train Ticket,want
+90.96,2023-12-24,Entertainment,Streaming Service Subscription,want
+178.44,2023-12-25,Education,Online Course,need
+31.19,2023-12-25,Entertainment,Concert Venue,want
+122.5,2023-12-25,Utilities,Electricity Bill,need
+29.68,2023-12-26,Groceries,Local Supermarket,need
+117.82,2023-12-26,Health,Doctor Visit,need
+160.76,2023-12-27,Education,Bookstore,want
+49.78,2023-12-29,Personal Care,Pharmacy,need
+39.76,2023-12-30,Education,Bookstore,want
+11.29,2023-12-30,Entertainment,Cinema Tickets,want
+32.36,2023-12-30,Personal Care,Spa Center,want
+122.78,2023-12-31,Utilities,Internet Provider,need
+379.78,2023-12-31,Travel,Hotel Stay,want
+102.61,2023-12-31,Utilities,Electricity Bill,need
+30.48,2023-12-31,Groceries,Grocery Store B,need
+111.89,2023-12-31,Health,Gym Membership,need
+14.16,2024-01-01,Transportation,Ride Sharing App,need
+30.26,2024-01-01,Shopping,Clothing Store Sale,need
+18.04,2024-01-01,Personal Care,Haircut,want
+460.25,2024-01-01,Travel,Train Ticket,want
+185.07,2024-01-01,Shopping,Clothing Store Sale,need
+21.28,2024-01-02,Personal Care,Pharmacy,need
+52.18,2024-01-02,Transportation,Ride Sharing App,need
+81.97,2024-01-02,Travel,Flight Booking,want
+96.19,2024-01-04,Utilities,Electricity Bill,need
+116.71,2024-01-05,Health,Therapy Session,need
+58.84,2024-01-06,Personal Care,Pharmacy,need
+60.65,2024-01-07,Groceries,Supermarket A,need
+62.04,2024-01-07,Groceries,Local Supermarket,need
+102.13,2024-01-07,Education,Online Course,need
+36.49,2024-01-07,Dining Out,Sushi Bar,want
+62.61,2024-01-07,Utilities,Electricity Bill,need
+101.7,2024-01-08,Education,Online Course,need
+63.02,2024-01-08,Health,Therapy Session,need
+84.84,2024-01-08,Groceries,Grocery Store B,need
+49.62,2024-01-09,Groceries,Grocery Store B,need
+79.61,2024-01-10,Entertainment,Cinema Tickets,want
+19.92,2024-01-10,Transportation,Bus Pass Kiosk,need
+71.6,2024-01-10,Utilities,Water Bill,need
+8.79,2024-01-11,Personal Care,Spa Center,want
+161.45,2024-01-11,Education,Online Course,need
+105.1,2024-01-11,Health,Doctor Visit,need
+54.68,2024-01-12,Utilities,Internet Provider,need
+15.53,2024-01-13,Personal Care,Spa Center,want
+208.1,2024-01-14,Travel,Train Ticket,want
+55.58,2024-01-14,Utilities,Internet Provider,need
+135.38,2024-01-15,Health,Therapy Session,need
+59.76,2024-01-15,Entertainment,Streaming Service Subscription,want
+24.78,2024-01-15,Shopping,Bookshop,want
+63.94,2024-01-16,Travel,Hotel Stay,want
+33.87,2024-01-17,Entertainment,Streaming Service Subscription,want
+30.06,2024-01-17,Transportation,Petrol Station,need
+228.67,2024-01-18,Travel,Train Ticket,want
+25.79,2024-01-18,Transportation,Bus Pass Kiosk,need
+50.65,2024-01-19,Shopping,Home Decor,want
+66.2,2024-01-19,Utilities,Internet Provider,need
+481.19,2024-01-20,Travel,Train Ticket,want
+62.8,2024-01-20,Groceries,Local Supermarket,need
+23.82,2024-01-20,Dining Out,Pizzeria Bella,want
+43.13,2024-01-21,Health,Gym Membership,need
+63.99,2024-01-21,Personal Care,Spa Center,want
+238.46,2024-01-21,Education,Workshop Fee,need
+22.37,2024-01-21,Dining Out,Pizzeria Bella,want
+55.46,2024-01-22,Health,Gym Membership,need
+22.92,2024-01-22,Transportation,Petrol Station,need
+20.48,2024-01-22,Transportation,Ride Sharing App,need
+54.05,2024-01-23,Entertainment,Concert Venue,want
+189.89,2024-01-23,Shopping,Bookshop,want
+457.93,2024-01-23,Travel,Hotel Stay,want
+21.96,2024-01-24,Transportation,Petrol Station,need
+34.22,2024-01-24,Personal Care,Pharmacy,need
+30.61,2024-01-25,Personal Care,Pharmacy,need
+17.87,2024-01-25,Dining Out,Pizzeria Bella,want
+45.7,2024-01-27,Transportation,Petrol Station,need
+126.74,2024-01-27,Education,Online Course,need
+71.17,2024-01-27,Groceries,Local Supermarket,need
+11.49,2024-01-27,Entertainment,Streaming Service Subscription,want
+125.66,2024-01-28,Utilities,Internet Provider,need
+103.62,2024-01-28,Health,Gym Membership,need
+235.01,2024-01-28,Travel,Hotel Stay,want
+47.79,2024-01-28,Personal Care,Spa Center,want
+123.36,2024-01-28,Travel,Train Ticket,want
+47.18,2024-01-29,Transportation,Ride Sharing App,need
+132.49,2024-01-29,Health,Gym Membership,need
+76.16,2024-01-30,Personal Care,Spa Center,want
+137.91,2024-01-30,Travel,Hotel Stay,want
+19.66,2024-01-31,Transportation,Petrol Station,need
+166.28,2024-01-31,Shopping,Home Decor,want
+54.84,2024-02-01,Health,Therapy Session,need
+136.45,2024-02-01,Travel,Train Ticket,want
+55.57,2024-02-01,Education,Online Course,need
+17.15,2024-02-01,Dining Out,Lunch Cafe,want
+25.91,2024-02-01,Personal Care,Pharmacy,need
+60.28,2024-02-01,Groceries,Local Supermarket,need
+169.78,2024-02-02,Education,Online Course,need
+14.42,2024-02-02,Dining Out,Sushi Bar,want
+167.5,2024-02-03,Education,Bookstore,want
+51.39,2024-02-03,Personal Care,Haircut,want
+125.91,2024-02-03,Shopping,Online Electronics,want
+31.07,2024-02-03,Groceries,Local Supermarket,need
+88.19,2024-02-04,Travel,Train Ticket,want
+319.61,2024-02-04,Travel,Flight Booking,want
+370.53,2024-02-04,Travel,Hotel Stay,want
+168.67,2024-02-04,Shopping,Online Electronics,want
+21.14,2024-02-04,Transportation,Ride Sharing App,need
+32.18,2024-02-05,Transportation,Ride Sharing App,need
+13.27,2024-02-06,Entertainment,Cinema Tickets,want
+22.76,2024-02-06,Personal Care,Pharmacy,need
+25.45,2024-02-07,Dining Out,Coffee Shop Downtown,want
+51.17,2024-02-07,Health,Doctor Visit,need
+142.97,2024-02-08,Health,Doctor Visit,need
+184.7,2024-02-08,Shopping,Online Electronics,want
+90.04,2024-02-09,Education,Workshop Fee,need
+84.08,2024-02-09,Entertainment,Cinema Tickets,want
+50.3,2024-02-09,Shopping,Bookshop,want
+23.12,2024-02-10,Transportation,Bus Pass Kiosk,need
+79.73,2024-02-10,Utilities,Electricity Bill,need
+137.97,2024-02-10,Utilities,Internet Provider,need
+15.64,2024-02-10,Transportation,Ride Sharing App,need
+38.57,2024-02-10,Personal Care,Haircut,want
+148.91,2024-02-11,Utilities,Electricity Bill,need
+42.01,2024-02-13,Utilities,Electricity Bill,need
+33.82,2024-02-13,Dining Out,Lunch Cafe,want
+264.93,2024-02-13,Travel,Hotel Stay,want
+52.94,2024-02-14,Transportation,Bus Pass Kiosk,need
+69.85,2024-02-15,Health,Therapy Session,need
+140.75,2024-02-15,Utilities,Water Bill,need
+174.53,2024-02-15,Shopping,Bookshop,want
+51.47,2024-02-15,Education,Bookstore,want
+66.71,2024-02-15,Groceries,Grocery Store B,need
+35.68,2024-02-17,Transportation,Ride Sharing App,need
+54.49,2024-02-17,Entertainment,Cinema Tickets,want
+102.24,2024-02-17,Groceries,Supermarket A,need
+36.98,2024-02-17,Dining Out,Sushi Bar,want
+19.6,2024-02-18,Transportation,Ride Sharing App,need
+21.49,2024-02-18,Dining Out,Sushi Bar,want
+40.85,2024-02-19,Education,Online Course,need
+65.89,2024-02-19,Education,Online Course,need
+315.37,2024-02-19,Travel,Hotel Stay,want
+492.4,2024-02-20,Travel,Flight Booking,want
+50.16,2024-02-21,Groceries,Local Supermarket,need
+170.84,2024-02-21,Shopping,Home Decor,want
+37.46,2024-02-21,Entertainment,Streaming Service Subscription,want
+274.69,2024-02-22,Travel,Hotel Stay,want
+59.2,2024-02-23,Utilities,Electricity Bill,need
+66.68,2024-02-24,Groceries,Grocery Store B,need
+21.17,2024-02-24,Transportation,Petrol Station,need
+13.38,2024-02-24,Personal Care,Pharmacy,need
+34.29,2024-02-24,Entertainment,Concert Venue,want
+84.36,2024-02-25,Utilities,Water Bill,need
+15.98,2024-02-25,Dining Out,Pizzeria Bella,want
+77.91,2024-02-25,Travel,Hotel Stay,want
+20.95,2024-02-25,Dining Out,Coffee Shop Downtown,want
+34.48,2024-02-25,Dining Out,Sushi Bar,want
+134.49,2024-02-26,Health,Gym Membership,need
+125.76,2024-02-26,Education,Bookstore,want
+96.47,2024-02-26,Utilities,Water Bill,need
+205.23,2024-02-27,Travel,Train Ticket,want
+134.75,2024-02-27,Education,Workshop Fee,need
+62.76,2024-02-28,Personal Care,Haircut,want
+75.94,2024-02-28,Health,Doctor Visit,need
+14.4,2024-02-29,Dining Out,Coffee Shop Downtown,want
+23.89,2024-02-29,Transportation,Ride Sharing App,need
+67.38,2024-02-29,Health,Gym Membership,need
+34.36,2024-03-01,Transportation,Ride Sharing App,need
+37.64,2024-03-01,Transportation,Bus Pass Kiosk,need
+88.89,2024-03-02,Health,Doctor Visit,need
+24.28,2024-03-02,Dining Out,Lunch Cafe,want
+119.12,2024-03-02,Education,Online Course,need
+140.84,2024-03-02,Shopping,Online Electronics,want
+58.13,2024-03-02,Utilities,Electricity Bill,need
+46.38,2024-03-03,Utilities,Electricity Bill,need
+400.06,2024-03-03,Travel,Flight Booking,want
+105.91,2024-03-03,Groceries,Local Supermarket,need
+111.07,2024-03-03,Travel,Flight Booking,want
+68.52,2024-03-04,Groceries,Local Supermarket,need
+213.91,2024-03-04,Travel,Train Ticket,want
+93.84,2024-03-04,Utilities,Internet Provider,need
+140.48,2024-03-05,Utilities,Water Bill,need
+92.16,2024-03-05,Health,Doctor Visit,need
+77.02,2024-03-07,Utilities,Electricity Bill,need
+208.5,2024-03-07,Education,Bookstore,want
+48.98,2024-03-07,Personal Care,Pharmacy,need
+33.49,2024-03-08,Personal Care,Spa Center,want
+105.56,2024-03-09,Health,Doctor Visit,need
+38.71,2024-03-09,Shopping,Bookshop,want
+385.51,2024-03-09,Travel,Hotel Stay,want
+190.15,2024-03-10,Education,Bookstore,want
+21.11,2024-03-10,Dining Out,Fast Food Z,want
+27.74,2024-03-11,Dining Out,Coffee Shop Downtown,want
+40.18,2024-03-11,Personal Care,Pharmacy,need
+57.58,2024-03-11,Transportation,Petrol Station,need
+21.37,2024-03-12,Health,Therapy Session,need
+31.05,2024-03-12,Transportation,Ride Sharing App,need
+138.24,2024-03-13,Health,Gym Membership,need
+42.97,2024-03-14,Entertainment,Concert Venue,want
+169.68,2024-03-14,Travel,Train Ticket,want
+101.78,2024-03-14,Groceries,Local Supermarket,need
+17.44,2024-03-15,Personal Care,Pharmacy,need
+41.38,2024-03-15,Shopping,Online Electronics,want
+28.35,2024-03-15,Personal Care,Spa Center,want
+15.25,2024-03-16,Dining Out,Lunch Cafe,want
+20.48,2024-03-16,Transportation,Petrol Station,need
+75.28,2024-03-16,Entertainment,Streaming Service Subscription,want
+251.3,2024-03-16,Travel,Flight Booking,want
+23.91,2024-03-16,Dining Out,Fast Food Z,want
+11.34,2024-03-17,Dining Out,Sushi Bar,want
+36.96,2024-03-17,Personal Care,Pharmacy,need
+41.81,2024-03-17,Personal Care,Spa Center,want
+21.33,2024-03-17,Transportation,Petrol Station,need
+39.04,2024-03-18,Personal Care,Pharmacy,need
+112.54,2024-03-18,Shopping,Clothing Store Sale,need
+48.22,2024-03-18,Groceries,Supermarket A,need
+49.18,2024-03-19,Transportation,Bus Pass Kiosk,need
+27.12,2024-03-22,Personal Care,Haircut,want
+164.73,2024-03-22,Shopping,Bookshop,want
+211.74,2024-03-23,Education,Online Course,need
+20.57,2024-03-24,Personal Care,Spa Center,want
+291.19,2024-03-26,Travel,Hotel Stay,want
+110.03,2024-03-26,Health,Gym Membership,need
+66.51,2024-03-27,Entertainment,Cinema Tickets,want
+29.31,2024-03-28,Dining Out,Coffee Shop Downtown,want
+114.49,2024-03-28,Education,Bookstore,want
+116.16,2024-03-28,Groceries,Local Supermarket,need
+186.95,2024-03-29,Shopping,Clothing Store Sale,need
+11.3,2024-03-29,Dining Out,Sushi Bar,want
+110.16,2024-03-30,Shopping,Online Electronics,want
+35.37,2024-03-30,Utilities,Water Bill,need
+114.72,2024-03-30,Health,Therapy Session,need
+74.19,2024-03-30,Personal Care,Pharmacy,need
+179.89,2024-03-30,Shopping,Home Decor,want
+27.66,2024-03-31,Groceries,Supermarket A,need
+28.13,2024-03-31,Health,Gym Membership,need
+60.27,2024-03-31,Personal Care,Haircut,want
+63.86,2024-03-31,Utilities,Internet Provider,need
+85.93,2024-03-31,Shopping,Bookshop,want
+11.55,2024-04-01,Dining Out,Pizzeria Bella,want
+42.07,2024-04-01,Shopping,Bookshop,want
+101.13,2024-04-01,Shopping,Home Decor,want
+26.44,2024-04-01,Dining Out,Sushi Bar,want
+43.5,2024-04-01,Transportation,Bus Pass Kiosk,need
+92.79,2024-04-02,Entertainment,Streaming Service Subscription,want
+56.15,2024-04-03,Shopping,Home Decor,want
+49.72,2024-04-04,Groceries,Local Supermarket,need
+167.11,2024-04-05,Education,Bookstore,want
+20.02,2024-04-06,Transportation,Bus Pass Kiosk,need
+10.81,2024-04-06,Dining Out,Lunch Cafe,want
+289.31,2024-04-06,Travel,Train Ticket,want
+39.82,2024-04-07,Entertainment,Concert Venue,want
+16.01,2024-04-07,Personal Care,Pharmacy,need
+51.77,2024-04-07,Health,Doctor Visit,need
+482.09,2024-04-07,Travel,Flight Booking,want
+5.93,2024-04-07,Dining Out,Sushi Bar,want
+497.39,2024-04-08,Travel,Flight Booking,want
+367.61,2024-04-11,Travel,Train Ticket,want
+44.63,2024-04-12,Transportation,Ride Sharing App,need
+61.69,2024-04-13,Utilities,Internet Provider,need
+39.54,2024-04-14,Utilities,Internet Provider,need
+144.95,2024-04-14,Shopping,Clothing Store Sale,need
+63.83,2024-04-14,Utilities,Internet Provider,need
+88.54,2024-04-14,Entertainment,Cinema Tickets,want
+195.42,2024-04-15,Shopping,Bookshop,want
+11.55,2024-04-15,Transportation,Petrol Station,need
+91.04,2024-04-15,Utilities,Internet Provider,need
+146.74,2024-04-16,Health,Doctor Visit,need
+111.05,2024-04-16,Shopping,Home Decor,want
+131.71,2024-04-16,Health,Gym Membership,need
+252.42,2024-04-18,Travel,Hotel Stay,want
+75.96,2024-04-18,Health,Doctor Visit,need
+126.11,2024-04-19,Health,Doctor Visit,need
+70.79,2024-04-19,Groceries,Local Supermarket,need
+24.37,2024-04-20,Groceries,Supermarket A,need
+48.69,2024-04-20,Personal Care,Pharmacy,need
+53.16,2024-04-20,Utilities,Water Bill,need
+75.46,2024-04-21,Groceries,Local Supermarket,need
+134.16,2024-04-21,Utilities,Electricity Bill,need
+98.1,2024-04-21,Health,Therapy Session,need
+54.82,2024-04-21,Health,Gym Membership,need
+13.93,2024-04-21,Entertainment,Cinema Tickets,want
+25.22,2024-04-22,Entertainment,Streaming Service Subscription,want
+109.48,2024-04-22,Travel,Hotel Stay,want
+12.03,2024-04-22,Personal Care,Pharmacy,need
+164.16,2024-04-23,Travel,Hotel Stay,want
+282.3,2024-04-24,Travel,Train Ticket,want
+47.07,2024-04-24,Health,Gym Membership,need
+69.72,2024-04-24,Travel,Flight Booking,want
+122.87,2024-04-25,Education,Bookstore,want
+34.36,2024-04-25,Entertainment,Cinema Tickets,want
+18.61,2024-04-25,Transportation,Petrol Station,need
+35.43,2024-04-27,Entertainment,Concert Venue,want
+75.46,2024-04-27,Health,Therapy Session,need
+33.51,2024-04-27,Transportation,Petrol Station,need
+58.54,2024-04-28,Travel,Flight Booking,want
+10.02,2024-04-28,Personal Care,Spa Center,want
+18.08,2024-04-29,Dining Out,Sushi Bar,want
+10.09,2024-04-29,Transportation,Ride Sharing App,need
+150.77,2024-04-30,Education,Bookstore,want
+55.16,2024-04-30,Personal Care,Haircut,want
+84.23,2024-05-01,Health,Gym Membership,need
+44.61,2024-05-01,Utilities,Internet Provider,need
+61.09,2024-05-01,Education,Bookstore,want
+83.06,2024-05-03,Utilities,Water Bill,need
+143.08,2024-05-04,Utilities,Water Bill,need
+259.14,2024-05-04,Travel,Flight Booking,want
+394.89,2024-05-04,Travel,Hotel Stay,want
+76.91,2024-05-04,Entertainment,Cinema Tickets,want
+143.73,2024-05-04,Utilities,Internet Provider,need
+239.31,2024-05-05,Education,Workshop Fee,need
+82.72,2024-05-05,Utilities,Electricity Bill,need
+136.55,2024-05-05,Education,Bookstore,want
+102.8,2024-05-05,Health,Therapy Session,need
+335.53,2024-05-05,Travel,Train Ticket,want
+23.05,2024-05-07,Entertainment,Streaming Service Subscription,want
+5.55,2024-05-08,Dining Out,Fast Food Z,want
+121.19,2024-05-08,Health,Doctor Visit,need
+98.25,2024-05-08,Groceries,Grocery Store B,need
+43.78,2024-05-09,Transportation,Ride Sharing App,need
+32.88,2024-05-09,Utilities,Internet Provider,need
+70.03,2024-05-10,Health,Gym Membership,need
+39.47,2024-05-10,Transportation,Petrol Station,need
+179.07,2024-05-10,Shopping,Bookshop,want
+13.42,2024-05-11,Personal Care,Spa Center,want
+82.89,2024-05-12,Entertainment,Cinema Tickets,want
+53.59,2024-05-12,Entertainment,Cinema Tickets,want
+93.32,2024-05-12,Groceries,Grocery Store B,need
+72.89,2024-05-12,Education,Bookstore,want
+75.81,2024-05-13,Health,Doctor Visit,need
+79.2,2024-05-14,Groceries,Grocery Store B,need
+15.26,2024-05-15,Dining Out,Lunch Cafe,want
+114.52,2024-05-15,Health,Gym Membership,need
+20.39,2024-05-15,Dining Out,Pizzeria Bella,want
+64.05,2024-05-15,Personal Care,Spa Center,want
+78.4,2024-05-15,Health,Doctor Visit,need
+12.41,2024-05-16,Shopping,Online Electronics,want
+26.14,2024-05-16,Shopping,Bookshop,want
+107.24,2024-05-16,Travel,Hotel Stay,want
+136.66,2024-05-18,Health,Therapy Session,need
+39.43,2024-05-19,Dining Out,Pizzeria Bella,want
+194.12,2024-05-19,Shopping,Clothing Store Sale,need
+349.69,2024-05-19,Travel,Flight Booking,want
+62.62,2024-05-19,Groceries,Grocery Store B,need
+110.96,2024-05-19,Utilities,Internet Provider,need
+37.06,2024-05-20,Groceries,Grocery Store B,need
+42.03,2024-05-20,Personal Care,Spa Center,want
+450.34,2024-05-20,Travel,Hotel Stay,want
+55.12,2024-05-21,Groceries,Grocery Store B,need
+38.04,2024-05-22,Groceries,Local Supermarket,need
+77.82,2024-05-22,Personal Care,Haircut,want
+114.43,2024-05-24,Shopping,Bookshop,want
+26.07,2024-05-24,Dining Out,Fast Food Z,want
+106.44,2024-05-25,Groceries,Grocery Store B,need
+62.85,2024-05-25,Shopping,Clothing Store Sale,need
+122.86,2024-05-26,Health,Therapy Session,need
+39.74,2024-05-27,Transportation,Petrol Station,need
+12.19,2024-05-29,Transportation,Bus Pass Kiosk,need
+57.09,2024-05-29,Personal Care,Haircut,want
+393.45,2024-05-29,Travel,Train Ticket,want
+71.62,2024-05-30,Utilities,Electricity Bill,need
+236.32,2024-05-30,Education,Workshop Fee,need
+67.64,2024-05-31,Groceries,Grocery Store B,need
+56.55,2024-05-31,Entertainment,Streaming Service Subscription,want
+55.46,2024-06-01,Groceries,Local Supermarket,need
+38.9,2024-06-02,Dining Out,Lunch Cafe,want
+122.13,2024-06-02,Health,Gym Membership,need
+68.32,2024-06-02,Personal Care,Spa Center,want
+144.72,2024-06-02,Shopping,Bookshop,want
+259.54,2024-06-02,Travel,Hotel Stay,want
+35.34,2024-06-03,Dining Out,Coffee Shop Downtown,want
+72.21,2024-06-03,Education,Online Course,need
+63.39,2024-06-04,Health,Doctor Visit,need
+103.27,2024-06-05,Groceries,Grocery Store B,need
+42.51,2024-06-08,Utilities,Electricity Bill,need
+40.75,2024-06-08,Transportation,Petrol Station,need
+10.41,2024-06-08,Dining Out,Fast Food Z,want
+68.84,2024-06-08,Utilities,Water Bill,need
+80.06,2024-06-09,Groceries,Supermarket A,need
+90.75,2024-06-09,Entertainment,Concert Venue,want
+22.87,2024-06-09,Entertainment,Cinema Tickets,want
+72.38,2024-06-09,Groceries,Grocery Store B,need
+91.55,2024-06-09,Shopping,Home Decor,want
+50.87,2024-06-11,Utilities,Water Bill,need
+85.57,2024-06-11,Groceries,Local Supermarket,need
+20.6,2024-06-13,Transportation,Ride Sharing App,need
+28.7,2024-06-15,Transportation,Bus Pass Kiosk,need
+6.35,2024-06-15,Dining Out,Sushi Bar,want
+60.99,2024-06-15,Health,Gym Membership,need
+53.38,2024-06-16,Transportation,Bus Pass Kiosk,need
+58.01,2024-06-20,Transportation,Petrol Station,need
+64.59,2024-06-20,Groceries,Local Supermarket,need
+33.66,2024-06-21,Education,Online Course,need
+34.59,2024-06-21,Transportation,Bus Pass Kiosk,need
+492.02,2024-06-22,Travel,Hotel Stay,want
+38.06,2024-06-23,Dining Out,Sushi Bar,want
+41.29,2024-06-23,Transportation,Petrol Station,need
+56.33,2024-06-23,Transportation,Petrol Station,need
+120.32,2024-06-23,Education,Workshop Fee,need
+76.41,2024-06-24,Utilities,Electricity Bill,need
+51.49,2024-06-25,Education,Workshop Fee,need
+30.53,2024-06-25,Utilities,Water Bill,need
+113.19,2024-06-25,Education,Bookstore,want
+248.8,2024-06-26,Travel,Train Ticket,want
+60.84,2024-06-27,Personal Care,Spa Center,want
+44.12,2024-06-27,Utilities,Electricity Bill,need
+49.85,2024-06-28,Shopping,Bookshop,want
+125.99,2024-06-29,Education,Online Course,need
+64.41,2024-06-29,Entertainment,Concert Venue,want
+14.86,2024-06-29,Dining Out,Lunch Cafe,want
+191.0,2024-06-29,Education,Workshop Fee,need
+79.72,2024-06-30,Personal Care,Haircut,want
+375.81,2024-06-30,Travel,Flight Booking,want
+47.62,2024-06-30,Personal Care,Haircut,want
+31.87,2024-07-01,Entertainment,Concert Venue,want
+13.66,2024-07-01,Transportation,Petrol Station,need
+119.49,2024-07-01,Shopping,Bookshop,want
+30.03,2024-07-03,Personal Care,Haircut,want
+38.5,2024-07-03,Dining Out,Pizzeria Bella,want
+434.29,2024-07-04,Travel,Hotel Stay,want
+153.92,2024-07-05,Travel,Hotel Stay,want
+62.65,2024-07-06,Entertainment,Streaming Service Subscription,want
+29.18,2024-07-06,Personal Care,Spa Center,want
+238.75,2024-07-06,Education,Online Course,need
+18.27,2024-07-06,Dining Out,Coffee Shop Downtown,want
+345.45,2024-07-07,Travel,Flight Booking,want
+123.31,2024-07-07,Shopping,Bookshop,want
+39.76,2024-07-07,Transportation,Bus Pass Kiosk,need
+110.26,2024-07-07,Travel,Flight Booking,want
+143.54,2024-07-07,Health,Gym Membership,need
+34.6,2024-07-08,Education,Bookstore,want
+64.93,2024-07-09,Entertainment,Cinema Tickets,want
+42.11,2024-07-09,Transportation,Bus Pass Kiosk,need
+24.13,2024-07-11,Shopping,Bookshop,want
+113.33,2024-07-11,Health,Gym Membership,need
+382.76,2024-07-11,Travel,Hotel Stay,want
+38.2,2024-07-12,Personal Care,Spa Center,want
+11.0,2024-07-13,Entertainment,Streaming Service Subscription,want
+95.93,2024-07-13,Education,Bookstore,want
+312.73,2024-07-14,Travel,Hotel Stay,want
+95.51,2024-07-14,Health,Gym Membership,need
+16.02,2024-07-14,Dining Out,Pizzeria Bella,want
+77.42,2024-07-14,Groceries,Supermarket A,need
+52.52,2024-07-14,Entertainment,Concert Venue,want
+40.94,2024-07-15,Health,Gym Membership,need
+66.0,2024-07-15,Groceries,Local Supermarket,need
+85.09,2024-07-16,Entertainment,Streaming Service Subscription,want
+55.21,2024-07-17,Transportation,Bus Pass Kiosk,need
+92.51,2024-07-17,Utilities,Water Bill,need
+104.63,2024-07-18,Groceries,Grocery Store B,need
+61.49,2024-07-18,Entertainment,Cinema Tickets,want
+85.23,2024-07-18,Health,Therapy Session,need
+51.62,2024-07-19,Personal Care,Spa Center,want
+99.45,2024-07-19,Utilities,Internet Provider,need
+37.5,2024-07-20,Utilities,Internet Provider,need
+5.7,2024-07-20,Dining Out,Coffee Shop Downtown,want
+54.85,2024-07-20,Personal Care,Spa Center,want
+13.11,2024-07-20,Transportation,Ride Sharing App,need
+32.33,2024-07-20,Personal Care,Spa Center,want
+163.76,2024-07-21,Education,Bookstore,want
+57.05,2024-07-21,Utilities,Internet Provider,need
+28.19,2024-07-21,Dining Out,Sushi Bar,want
+208.42,2024-07-21,Education,Online Course,need
+38.01,2024-07-22,Dining Out,Fast Food Z,want
+49.25,2024-07-22,Utilities,Water Bill,need
+141.85,2024-07-23,Utilities,Internet Provider,need
+188.0,2024-07-23,Travel,Hotel Stay,want
+22.05,2024-07-24,Dining Out,Coffee Shop Downtown,want
+35.79,2024-07-24,Transportation,Ride Sharing App,need
+79.95,2024-07-25,Entertainment,Cinema Tickets,want
+123.94,2024-07-25,Shopping,Home Decor,want
+31.68,2024-07-27,Personal Care,Spa Center,want
+403.01,2024-07-28,Travel,Hotel Stay,want
+69.82,2024-07-28,Shopping,Online Electronics,want
+60.3,2024-07-28,Personal Care,Haircut,want
+64.73,2024-07-28,Entertainment,Streaming Service Subscription,want
+39.96,2024-07-28,Groceries,Local Supermarket,need
+116.37,2024-07-30,Groceries,Grocery Store B,need
+103.51,2024-07-30,Utilities,Water Bill,need
+40.56,2024-07-30,Groceries,Local Supermarket,need
+37.56,2024-07-31,Education,Workshop Fee,need
+175.5,2024-07-31,Shopping,Online Electronics,want
+155.52,2024-08-01,Travel,Train Ticket,want
+221.59,2024-08-01,Education,Bookstore,want
+468.59,2024-08-01,Travel,Flight Booking,want
+166.63,2024-08-01,Education,Workshop Fee,need
+69.89,2024-08-01,Entertainment,Concert Venue,want
+294.37,2024-08-01,Travel,Train Ticket,want
+64.72,2024-08-03,Health,Therapy Session,need
+13.08,2024-08-04,Transportation,Bus Pass Kiosk,need
+182.26,2024-08-04,Shopping,Online Electronics,want
+94.81,2024-08-05,Utilities,Internet Provider,need
+227.25,2024-08-06,Education,Workshop Fee,need
+155.77,2024-08-06,Education,Online Course,need
+24.9,2024-08-07,Personal Care,Pharmacy,need
+74.64,2024-08-08,Groceries,Local Supermarket,need
+46.5,2024-08-08,Personal Care,Haircut,want
+58.17,2024-08-08,Personal Care,Pharmacy,need
+80.67,2024-08-09,Entertainment,Cinema Tickets,want
+107.78,2024-08-10,Health,Gym Membership,need
+27.45,2024-08-10,Transportation,Petrol Station,need
+87.1,2024-08-10,Utilities,Internet Provider,need
+58.45,2024-08-10,Personal Care,Haircut,want
+22.12,2024-08-10,Shopping,Online Electronics,want
+52.58,2024-08-11,Transportation,Ride Sharing App,need
+43.13,2024-08-11,Transportation,Petrol Station,need
+63.48,2024-08-11,Health,Gym Membership,need
+53.68,2024-08-12,Entertainment,Concert Venue,want
+9.34,2024-08-13,Personal Care,Pharmacy,need
+44.98,2024-08-13,Groceries,Supermarket A,need
+221.29,2024-08-13,Education,Workshop Fee,need
+105.92,2024-08-14,Groceries,Supermarket A,need
+26.37,2024-08-14,Entertainment,Cinema Tickets,want
+65.96,2024-08-14,Health,Doctor Visit,need
+28.91,2024-08-15,Transportation,Petrol Station,need
+49.34,2024-08-15,Shopping,Online Electronics,want
+59.18,2024-08-15,Entertainment,Streaming Service Subscription,want
+86.22,2024-08-15,Entertainment,Cinema Tickets,want
+25.96,2024-08-15,Dining Out,Fast Food Z,want
+36.06,2024-08-16,Transportation,Ride Sharing App,need
+179.4,2024-08-17,Shopping,Home Decor,want
+58.12,2024-08-17,Personal Care,Haircut,want
+111.85,2024-08-17,Utilities,Water Bill,need
+68.24,2024-08-17,Groceries,Supermarket A,need
+20.64,2024-08-17,Dining Out,Sushi Bar,want
+61.29,2024-08-18,Education,Bookstore,want
+56.15,2024-08-18,Groceries,Local Supermarket,need
+227.54,2024-08-18,Travel,Flight Booking,want
+41.28,2024-08-18,Health,Therapy Session,need
+413.83,2024-08-19,Travel,Flight Booking,want
+137.27,2024-08-19,Health,Doctor Visit,need
+19.38,2024-08-20,Dining Out,Sushi Bar,want
+332.87,2024-08-20,Travel,Hotel Stay,want
+36.83,2024-08-20,Transportation,Ride Sharing App,need
+11.55,2024-08-21,Dining Out,Lunch Cafe,want
+83.84,2024-08-21,Entertainment,Cinema Tickets,want
+26.35,2024-08-21,Shopping,Home Decor,want
+63.71,2024-08-22,Groceries,Supermarket A,need
+127.39,2024-08-23,Health,Therapy Session,need
+23.11,2024-08-23,Health,Therapy Session,need
+40.45,2024-08-23,Transportation,Petrol Station,need
+135.09,2024-08-24,Utilities,Electricity Bill,need
+129.8,2024-08-24,Health,Doctor Visit,need
+242.84,2024-08-25,Education,Online Course,need
+32.62,2024-08-25,Transportation,Ride Sharing App,need
+18.41,2024-08-25,Shopping,Clothing Store Sale,need
+144.75,2024-08-25,Health,Therapy Session,need
+177.79,2024-08-26,Travel,Train Ticket,want
+49.8,2024-08-26,Utilities,Water Bill,need
+97.88,2024-08-27,Groceries,Local Supermarket,need
+134.99,2024-08-28,Utilities,Electricity Bill,need
+41.04,2024-08-28,Groceries,Supermarket A,need
+66.01,2024-08-28,Groceries,Grocery Store B,need
+25.6,2024-08-30,Transportation,Bus Pass Kiosk,need
+194.55,2024-08-30,Education,Bookstore,want
+107.01,2024-08-30,Education,Online Course,need
+68.06,2024-08-30,Personal Care,Spa Center,want
+39.79,2024-08-30,Dining Out,Coffee Shop Downtown,want
+113.29,2024-08-30,Groceries,Supermarket A,need
+100.4,2024-08-31,Utilities,Water Bill,need
+38.41,2024-08-31,Dining Out,Lunch Cafe,want
+184.95,2024-09-01,Shopping,Bookshop,want
+69.41,2024-09-01,Utilities,Internet Provider,need
+35.25,2024-09-01,Transportation,Petrol Station,need
+62.58,2024-09-01,Personal Care,Spa Center,want
+119.08,2024-09-01,Health,Doctor Visit,need
+32.97,2024-09-02,Entertainment,Concert Venue,want
+52.15,2024-09-02,Groceries,Supermarket A,need
+122.66,2024-09-03,Health,Gym Membership,need
+15.9,2024-09-03,Dining Out,Fast Food Z,want
+64.22,2024-09-03,Groceries,Supermarket A,need
+60.0,2024-09-04,Groceries,Supermarket A,need
+444.34,2024-09-04,Travel,Flight Booking,want
+14.84,2024-09-05,Transportation,Petrol Station,need
+53.82,2024-09-05,Entertainment,Cinema Tickets,want
+113.15,2024-09-06,Travel,Hotel Stay,want
+46.76,2024-09-06,Education,Online Course,need
+147.24,2024-09-06,Health,Gym Membership,need
+64.85,2024-09-07,Utilities,Internet Provider,need
+58.01,2024-09-08,Transportation,Petrol Station,need
+31.91,2024-09-08,Transportation,Petrol Station,need
+40.92,2024-09-08,Entertainment,Streaming Service Subscription,want
+30.59,2024-09-08,Shopping,Bookshop,want
+464.73,2024-09-08,Travel,Hotel Stay,want
+16.63,2024-09-09,Entertainment,Cinema Tickets,want
+81.46,2024-09-10,Entertainment,Cinema Tickets,want
+69.73,2024-09-10,Personal Care,Pharmacy,need
+70.25,2024-09-10,Entertainment,Concert Venue,want
+55.65,2024-09-11,Personal Care,Haircut,want
+40.81,2024-09-11,Health,Therapy Session,need
+37.5,2024-09-11,Education,Workshop Fee,need
+166.56,2024-09-12,Education,Bookstore,want
+74.34,2024-09-12,Shopping,Online Electronics,want
+71.53,2024-09-13,Personal Care,Spa Center,want
+163.96,2024-09-14,Travel,Train Ticket,want
+299.28,2024-09-14,Travel,Train Ticket,want
+70.84,2024-09-15,Shopping,Bookshop,want
+15.5,2024-09-15,Transportation,Bus Pass Kiosk,need
+13.6,2024-09-15,Transportation,Bus Pass Kiosk,need
+179.93,2024-09-15,Shopping,Clothing Store Sale,need
+13.37,2024-09-16,Shopping,Clothing Store Sale,need
+167.27,2024-09-17,Education,Bookstore,want
+59.97,2024-09-18,Groceries,Supermarket A,need
+22.19,2024-09-18,Entertainment,Concert Venue,want
+138.24,2024-09-19,Utilities,Water Bill,need
+54.53,2024-09-20,Personal Care,Pharmacy,need
+172.44,2024-09-20,Shopping,Home Decor,want
+35.51,2024-09-21,Dining Out,Fast Food Z,want
+102.9,2024-09-21,Utilities,Internet Provider,need
+35.67,2024-09-22,Transportation,Ride Sharing App,need
+97.08,2024-09-22,Education,Online Course,need
+60.61,2024-09-22,Personal Care,Pharmacy,need
+44.17,2024-09-23,Entertainment,Cinema Tickets,want
+90.72,2024-09-24,Entertainment,Concert Venue,want
+118.99,2024-09-25,Groceries,Local Supermarket,need
+56.16,2024-09-27,Personal Care,Haircut,want
+76.4,2024-09-27,Health,Therapy Session,need
+133.11,2024-09-28,Utilities,Electricity Bill,need
+52.9,2024-09-28,Groceries,Grocery Store B,need
+104.8,2024-09-28,Groceries,Supermarket A,need
+31.83,2024-09-29,Entertainment,Cinema Tickets,want
+42.67,2024-09-29,Groceries,Local Supermarket,need
+75.81,2024-09-29,Health,Therapy Session,need
+115.36,2024-09-29,Groceries,Grocery Store B,need
+188.91,2024-09-29,Education,Online Course,need
+51.6,2024-09-30,Travel,Train Ticket,want
+166.42,2024-09-30,Shopping,Clothing Store Sale,need
+9.63,2024-10-01,Dining Out,Sushi Bar,want
+138.81,2024-10-01,Travel,Hotel Stay,want
+37.79,2024-10-02,Personal Care,Pharmacy,need
+11.7,2024-10-02,Personal Care,Haircut,want
+63.95,2024-10-02,Education,Workshop Fee,need
+29.79,2024-10-04,Dining Out,Lunch Cafe,want
+297.81,2024-10-05,Travel,Flight Booking,want
+90.39,2024-10-05,Education,Online Course,need
+78.22,2024-10-05,Utilities,Water Bill,need
+301.56,2024-10-05,Travel,Flight Booking,want
+52.27,2024-10-05,Personal Care,Pharmacy,need
+180.76,2024-10-06,Education,Workshop Fee,need
+24.97,2024-10-06,Health,Therapy Session,need
+35.81,2024-10-06,Dining Out,Fast Food Z,want
+77.4,2024-10-06,Education,Bookstore,want
+66.44,2024-10-06,Personal Care,Spa Center,want
+19.09,2024-10-07,Transportation,Petrol Station,need
+40.81,2024-10-08,Utilities,Internet Provider,need
+24.86,2024-10-08,Dining Out,Coffee Shop Downtown,want
+37.29,2024-10-08,Dining Out,Lunch Cafe,want
+58.02,2024-10-09,Entertainment,Streaming Service Subscription,want
+89.53,2024-10-09,Utilities,Water Bill,need
+132.77,2024-10-09,Education,Workshop Fee,need
+181.76,2024-10-11,Education,Bookstore,want
+466.98,2024-10-11,Travel,Train Ticket,want
+97.2,2024-10-12,Entertainment,Streaming Service Subscription,want
+123.79,2024-10-12,Health,Doctor Visit,need
+37.21,2024-10-13,Transportation,Ride Sharing App,need
+40.12,2024-10-13,Personal Care,Spa Center,want
+94.38,2024-10-13,Entertainment,Concert Venue,want
+52.6,2024-10-14,Entertainment,Concert Venue,want
+85.41,2024-10-15,Groceries,Local Supermarket,need
+64.27,2024-10-15,Education,Workshop Fee,need
+95.82,2024-10-15,Groceries,Local Supermarket,need
+149.55,2024-10-15,Shopping,Clothing Store Sale,need
+74.94,2024-10-16,Personal Care,Haircut,want
+47.85,2024-10-16,Personal Care,Haircut,want
+58.82,2024-10-17,Transportation,Bus Pass Kiosk,need
+197.87,2024-10-17,Shopping,Online Electronics,want
+121.07,2024-10-17,Health,Gym Membership,need
+44.82,2024-10-18,Education,Bookstore,want
+55.84,2024-10-19,Utilities,Internet Provider,need
+132.06,2024-10-20,Utilities,Internet Provider,need
+12.22,2024-10-20,Personal Care,Pharmacy,need
+62.86,2024-10-20,Education,Bookstore,want
+17.21,2024-10-20,Entertainment,Concert Venue,want
+25.05,2024-10-20,Groceries,Supermarket A,need
+163.84,2024-10-21,Shopping,Bookshop,want
+89.08,2024-10-21,Travel,Hotel Stay,want
+205.41,2024-10-22,Travel,Hotel Stay,want
+53.09,2024-10-22,Groceries,Local Supermarket,need
+66.92,2024-10-22,Entertainment,Concert Venue,want
+385.79,2024-10-23,Travel,Train Ticket,want
+55.33,2024-10-24,Utilities,Electricity Bill,need
+57.21,2024-10-24,Education,Bookstore,want
+63.33,2024-10-26,Personal Care,Haircut,want
+73.06,2024-10-27,Personal Care,Haircut,want
+124.3,2024-10-28,Travel,Hotel Stay,want
+32.59,2024-10-28,Groceries,Supermarket A,need
+43.74,2024-10-29,Transportation,Petrol Station,need
+59.92,2024-10-29,Transportation,Ride Sharing App,need
+123.7,2024-10-30,Education,Workshop Fee,need
+55.4,2024-10-30,Entertainment,Streaming Service Subscription,want
+12.17,2024-11-01,Entertainment,Concert Venue,want
+122.48,2024-11-01,Shopping,Clothing Store Sale,need
+236.38,2024-11-01,Education,Online Course,need
+179.83,2024-11-02,Shopping,Online Electronics,want
+82.83,2024-11-02,Entertainment,Cinema Tickets,want
+52.4,2024-11-03,Entertainment,Concert Venue,want
+24.6,2024-11-04,Groceries,Grocery Store B,need
+21.56,2024-11-04,Transportation,Ride Sharing App,need
+90.45,2024-11-06,Education,Bookstore,want
+64.09,2024-11-07,Entertainment,Streaming Service Subscription,want
+59.93,2024-11-07,Groceries,Supermarket A,need
+128.97,2024-11-07,Education,Online Course,need
+89.03,2024-11-08,Utilities,Water Bill,need
+25.28,2024-11-08,Personal Care,Pharmacy,need
+112.18,2024-11-09,Shopping,Online Electronics,want
+31.12,2024-11-09,Dining Out,Pizzeria Bella,want
+82.32,2024-11-10,Groceries,Grocery Store B,need
+87.16,2024-11-10,Health,Therapy Session,need
+25.69,2024-11-10,Dining Out,Sushi Bar,want
+92.26,2024-11-10,Utilities,Electricity Bill,need
+145.91,2024-11-10,Shopping,Clothing Store Sale,need
+166.59,2024-11-13,Travel,Flight Booking,want
+250.89,2024-11-13,Travel,Hotel Stay,want
+19.32,2024-11-14,Transportation,Ride Sharing App,need
+141.19,2024-11-14,Shopping,Home Decor,want
+112.08,2024-11-15,Shopping,Clothing Store Sale,need
+117.12,2024-11-15,Travel,Hotel Stay,want
+23.85,2024-11-15,Transportation,Petrol Station,need
+55.93,2024-11-16,Utilities,Internet Provider,need
+102.56,2024-11-16,Shopping,Home Decor,want
+82.14,2024-11-16,Groceries,Supermarket A,need
+81.17,2024-11-17,Groceries,Local Supermarket,need
+48.72,2024-11-17,Groceries,Local Supermarket,need
+45.41,2024-11-17,Transportation,Petrol Station,need
+36.14,2024-11-18,Dining Out,Coffee Shop Downtown,want
+39.2,2024-11-18,Utilities,Electricity Bill,need
+5.64,2024-11-19,Personal Care,Spa Center,want
+15.19,2024-11-19,Education,Workshop Fee,need
+98.95,2024-11-19,Entertainment,Streaming Service Subscription,want
+41.78,2024-11-20,Personal Care,Spa Center,want
+183.84,2024-11-21,Travel,Flight Booking,want
+15.58,2024-11-21,Personal Care,Spa Center,want
+100.85,2024-11-21,Health,Doctor Visit,need
+235.28,2024-11-22,Education,Bookstore,want
+25.78,2024-11-22,Entertainment,Cinema Tickets,want
+76.05,2024-11-22,Utilities,Water Bill,need
+95.81,2024-11-23,Education,Workshop Fee,need
+14.52,2024-11-23,Entertainment,Streaming Service Subscription,want
+31.44,2024-11-23,Entertainment,Cinema Tickets,want
+59.79,2024-11-23,Transportation,Bus Pass Kiosk,need
+43.83,2024-11-24,Groceries,Local Supermarket,need
+202.54,2024-11-24,Travel,Hotel Stay,want
+108.01,2024-11-25,Groceries,Supermarket A,need
+226.36,2024-11-26,Travel,Hotel Stay,want
+166.62,2024-11-27,Shopping,Clothing Store Sale,need
+73.28,2024-11-27,Groceries,Supermarket A,need
+18.61,2024-11-28,Dining Out,Coffee Shop Downtown,want
+81.05,2024-11-28,Travel,Train Ticket,want
+82.35,2024-11-29,Groceries,Supermarket A,need
+65.02,2024-11-29,Personal Care,Spa Center,want
+170.78,2024-11-30,Shopping,Home Decor,want
+39.01,2024-11-30,Education,Workshop Fee,need
+102.22,2024-12-01,Groceries,Local Supermarket,need
+91.47,2024-12-01,Education,Online Course,need
+424.07,2024-12-02,Travel,Flight Booking,want
+57.23,2024-12-03,Personal Care,Haircut,want
+78.62,2024-12-03,Education,Bookstore,want
+41.77,2024-12-03,Shopping,Clothing Store Sale,need
+30.7,2024-12-04,Transportation,Petrol Station,need
+51.6,2024-12-05,Travel,Hotel Stay,want
+235.58,2024-12-05,Education,Bookstore,want
+58.16,2024-12-05,Entertainment,Streaming Service Subscription,want
+104.19,2024-12-06,Health,Gym Membership,need
+109.5,2024-12-06,Health,Gym Membership,need
+23.45,2024-12-06,Dining Out,Lunch Cafe,want
+60.76,2024-12-07,Travel,Flight Booking,want
+59.71,2024-12-07,Transportation,Bus Pass Kiosk,need
+114.63,2024-12-07,Groceries,Grocery Store B,need
+35.53,2024-12-08,Transportation,Ride Sharing App,need
+41.13,2024-12-08,Transportation,Ride Sharing App,need
+71.82,2024-12-08,Travel,Flight Booking,want
+145.25,2024-12-08,Health,Gym Membership,need
+100.59,2024-12-09,Health,Gym Membership,need
+87.06,2024-12-09,Utilities,Internet Provider,need
+40.63,2024-12-09,Transportation,Ride Sharing App,need
+41.96,2024-12-10,Entertainment,Cinema Tickets,want
+16.2,2024-12-10,Personal Care,Pharmacy,need
+11.49,2024-12-12,Dining Out,Fast Food Z,want
+93.11,2024-12-12,Entertainment,Streaming Service Subscription,want
+8.69,2024-12-13,Dining Out,Coffee Shop Downtown,want
+13.75,2024-12-13,Shopping,Home Decor,want
+10.81,2024-12-13,Transportation,Petrol Station,need
+27.37,2024-12-14,Transportation,Ride Sharing App,need
+154.16,2024-12-14,Shopping,Bookshop,want
+140.13,2024-12-15,Health,Therapy Session,need
+46.71,2024-12-15,Groceries,Supermarket A,need
+103.23,2024-12-16,Utilities,Internet Provider,need
+43.49,2024-12-16,Transportation,Bus Pass Kiosk,need
+71.18,2024-12-17,Entertainment,Concert Venue,want
+31.32,2024-12-18,Transportation,Ride Sharing App,need
+48.07,2024-12-19,Transportation,Petrol Station,need
+112.64,2024-12-19,Health,Gym Membership,need
+89.7,2024-12-19,Health,Gym Membership,need
+56.4,2024-12-21,Transportation,Ride Sharing App,need
+89.25,2024-12-22,Education,Online Course,need
+83.75,2024-12-22,Utilities,Internet Provider,need
+54.66,2024-12-22,Personal Care,Haircut,want
+123.64,2024-12-22,Travel,Hotel Stay,want
+50.98,2024-12-22,Health,Therapy Session,need
+77.76,2024-12-23,Entertainment,Streaming Service Subscription,want
+136.23,2024-12-23,Health,Doctor Visit,need
+24.39,2024-12-23,Dining Out,Pizzeria Bella,want
+26.79,2024-12-24,Health,Therapy Session,need
+58.41,2024-12-24,Health,Therapy Session,need
+62.17,2024-12-25,Education,Workshop Fee,need
+137.31,2024-12-26,Utilities,Internet Provider,need
+94.26,2024-12-27,Travel,Flight Booking,want
+58.26,2024-12-27,Entertainment,Concert Venue,want
+24.73,2024-12-28,Personal Care,Spa Center,want
+56.81,2024-12-28,Personal Care,Spa Center,want
+88.78,2024-12-28,Utilities,Internet Provider,need
+69.41,2024-12-28,Personal Care,Spa Center,want
+77.11,2024-12-29,Groceries,Supermarket A,need
+312.69,2024-12-29,Travel,Hotel Stay,want
+83.4,2024-12-29,Education,Online Course,need
+473.72,2024-12-30,Travel,Flight Booking,want
+42.43,2024-12-30,Transportation,Ride Sharing App,need
+139.31,2024-12-30,Shopping,Clothing Store Sale,need
+137.44,2024-12-30,Health,Doctor Visit,need
+73.14,2024-12-30,Groceries,Supermarket A,need
+38.9,2024-12-31,Dining Out,Pizzeria Bella,want
+65.37,2024-12-31,Health,Doctor Visit,need
+14.1,2025-01-01,Dining Out,Coffee Shop Downtown,want
+101.48,2025-01-01,Health,Therapy Session,need
+17.36,2025-01-01,Dining Out,Fast Food Z,want
+169.07,2025-01-01,Education,Bookstore,want
+182.34,2025-01-01,Travel,Hotel Stay,want
+41.79,2025-01-01,Groceries,Grocery Store B,need
+78.29,2025-01-02,Utilities,Internet Provider,need
+31.06,2025-01-03,Health,Gym Membership,need
+145.65,2025-01-03,Utilities,Internet Provider,need
+141.84,2025-01-04,Health,Gym Membership,need
+29.46,2025-01-04,Education,Online Course,need
+94.21,2025-01-04,Groceries,Grocery Store B,need
+16.99,2025-01-04,Dining Out,Fast Food Z,want
+32.98,2025-01-04,Transportation,Bus Pass Kiosk,need
+22.38,2025-01-05,Groceries,Supermarket A,need
+18.42,2025-01-06,Dining Out,Lunch Cafe,want
+19.2,2025-01-07,Dining Out,Lunch Cafe,want
+21.91,2025-01-07,Entertainment,Concert Venue,want
+132.57,2025-01-09,Health,Gym Membership,need
+19.72,2025-01-10,Transportation,Ride Sharing App,need
+406.11,2025-01-11,Travel,Train Ticket,want
+64.47,2025-01-11,Groceries,Grocery Store B,need
+81.83,2025-01-11,Utilities,Internet Provider,need
+167.48,2025-01-11,Education,Bookstore,want
+229.6,2025-01-12,Travel,Train Ticket,want
+33.22,2025-01-12,Education,Bookstore,want
+143.09,2025-01-12,Utilities,Water Bill,need
+142.08,2025-01-12,Health,Doctor Visit,need
+43.04,2025-01-12,Personal Care,Pharmacy,need
+110.2,2025-01-13,Utilities,Electricity Bill,need
+129.82,2025-01-13,Education,Workshop Fee,need
+20.67,2025-01-13,Health,Gym Membership,need
+79.47,2025-01-15,Groceries,Grocery Store B,need
+145.37,2025-01-15,Utilities,Water Bill,need
+49.34,2025-01-15,Transportation,Bus Pass Kiosk,need
+102.24,2025-01-17,Education,Workshop Fee,need
+52.44,2025-01-18,Transportation,Bus Pass Kiosk,need
+15.1,2025-01-19,Transportation,Petrol Station,need
+143.87,2025-01-19,Utilities,Water Bill,need
+12.79,2025-01-20,Personal Care,Spa Center,want
+17.81,2025-01-21,Dining Out,Fast Food Z,want
+14.55,2025-01-21,Dining Out,Sushi Bar,want
+19.03,2025-01-21,Shopping,Bookshop,want
+88.44,2025-01-22,Entertainment,Cinema Tickets,want
+28.49,2025-01-23,Transportation,Ride Sharing App,need
+121.22,2025-01-24,Utilities,Internet Provider,need
+72.49,2025-01-24,Groceries,Local Supermarket,need
+43.87,2025-01-25,Personal Care,Spa Center,want
+27.53,2025-01-25,Entertainment,Concert Venue,want
+79.24,2025-01-25,Utilities,Electricity Bill,need
+140.08,2025-01-25,Travel,Flight Booking,want
+109.96,2025-01-26,Groceries,Grocery Store B,need
+26.03,2025-01-26,Entertainment,Streaming Service Subscription,want
+12.19,2025-01-27,Dining Out,Fast Food Z,want
+84.19,2025-01-27,Travel,Hotel Stay,want
+94.01,2025-01-28,Shopping,Clothing Store Sale,need
+169.01,2025-01-28,Education,Online Course,need
+54.37,2025-01-29,Entertainment,Concert Venue,want
+135.38,2025-01-29,Utilities,Electricity Bill,need
+36.14,2025-01-30,Utilities,Water Bill,need
+28.44,2025-01-30,Shopping,Bookshop,want
+64.45,2025-01-31,Shopping,Clothing Store Sale,need
+21.58,2025-02-01,Transportation,Ride Sharing App,need
+90.91,2025-02-01,Groceries,Supermarket A,need
+231.54,2025-02-01,Travel,Train Ticket,want
+49.24,2025-02-01,Personal Care,Haircut,want
+132.13,2025-02-02,Utilities,Water Bill,need
+64.94,2025-02-02,Utilities,Water Bill,need
+94.0,2025-02-02,Health,Doctor Visit,need
+67.46,2025-02-04,Entertainment,Streaming Service Subscription,want
+148.66,2025-02-05,Utilities,Electricity Bill,need
+31.68,2025-02-05,Shopping,Online Electronics,want
+33.76,2025-02-07,Health,Doctor Visit,need
+10.66,2025-02-08,Transportation,Bus Pass Kiosk,need
+44.16,2025-02-08,Transportation,Petrol Station,need
+7.28,2025-02-08,Dining Out,Fast Food Z,want
+71.51,2025-02-09,Personal Care,Haircut,want
+20.97,2025-02-09,Dining Out,Sushi Bar,want
+139.75,2025-02-10,Utilities,Water Bill,need
+22.12,2025-02-10,Transportation,Ride Sharing App,need
+21.21,2025-02-11,Transportation,Bus Pass Kiosk,need
+38.79,2025-02-11,Dining Out,Lunch Cafe,want
+56.96,2025-02-12,Entertainment,Cinema Tickets,want
+39.18,2025-02-12,Personal Care,Haircut,want
+64.92,2025-02-12,Health,Gym Membership,need
+55.58,2025-02-13,Transportation,Ride Sharing App,need
+17.87,2025-02-14,Dining Out,Coffee Shop Downtown,want
+93.58,2025-02-14,Education,Online Course,need
+189.63,2025-02-14,Education,Bookstore,want
+92.92,2025-02-15,Groceries,Supermarket A,need
+38.13,2025-02-16,Dining Out,Pizzeria Bella,want
+349.64,2025-02-16,Travel,Hotel Stay,want
+167.57,2025-02-16,Education,Online Course,need
+39.98,2025-02-16,Transportation,Petrol Station,need
+61.59,2025-02-18,Groceries,Supermarket A,need
+17.54,2025-02-18,Dining Out,Pizzeria Bella,want
+146.68,2025-02-19,Utilities,Water Bill,need
+80.46,2025-02-20,Groceries,Grocery Store B,need
+90.2,2025-02-21,Travel,Flight Booking,want
+149.42,2025-02-21,Health,Gym Membership,need
+54.87,2025-02-21,Health,Doctor Visit,need
+114.41,2025-02-22,Utilities,Water Bill,need
+42.6,2025-02-22,Transportation,Ride Sharing App,need
+86.19,2025-02-23,Education,Workshop Fee,need
+218.78,2025-02-23,Education,Workshop Fee,need
+195.43,2025-02-23,Shopping,Online Electronics,want
+290.37,2025-02-23,Travel,Train Ticket,want
+92.08,2025-02-24,Entertainment,Streaming Service Subscription,want
+24.65,2025-02-24,Dining Out,Fast Food Z,want
+18.56,2025-02-25,Education,Workshop Fee,need
+131.19,2025-02-26,Shopping,Home Decor,want
+286.64,2025-02-26,Travel,Hotel Stay,want
+42.18,2025-02-27,Personal Care,Spa Center,want
+213.47,2025-02-28,Travel,Flight Booking,want
+29.01,2025-02-28,Entertainment,Cinema Tickets,want
+123.67,2025-03-01,Utilities,Electricity Bill,need
+56.28,2025-03-02,Transportation,Bus Pass Kiosk,need
+78.15,2025-03-02,Entertainment,Cinema Tickets,want
+55.61,2025-03-02,Transportation,Petrol Station,need
+142.89,2025-03-02,Shopping,Bookshop,want
+12.98,2025-03-03,Shopping,Bookshop,want
+55.85,2025-03-03,Travel,Train Ticket,want
+60.13,2025-03-04,Travel,Train Ticket,want
+80.62,2025-03-04,Entertainment,Streaming Service Subscription,want
+50.29,2025-03-04,Transportation,Ride Sharing App,need
+293.66,2025-03-06,Travel,Hotel Stay,want
+54.68,2025-03-06,Entertainment,Streaming Service Subscription,want
+144.79,2025-03-06,Shopping,Online Electronics,want
+125.92,2025-03-07,Utilities,Electricity Bill,need
+127.68,2025-03-08,Health,Gym Membership,need
+22.14,2025-03-08,Entertainment,Streaming Service Subscription,want
+133.91,2025-03-08,Utilities,Internet Provider,need
+100.55,2025-03-08,Education,Bookstore,want
+58.41,2025-03-09,Groceries,Supermarket A,need
+141.36,2025-03-09,Travel,Train Ticket,want
+165.9,2025-03-10,Education,Bookstore,want
+29.0,2025-03-10,Dining Out,Lunch Cafe,want
+218.95,2025-03-10,Education,Bookstore,want
+30.95,2025-03-11,Entertainment,Concert Venue,want
+61.22,2025-03-11,Education,Online Course,need
+70.28,2025-03-11,Shopping,Bookshop,want
+17.39,2025-03-12,Dining Out,Sushi Bar,want
+27.58,2025-03-12,Transportation,Bus Pass Kiosk,need
+64.08,2025-03-12,Education,Workshop Fee,need
+19.83,2025-03-13,Personal Care,Haircut,want
+154.72,2025-03-13,Shopping,Home Decor,want
+89.86,2025-03-13,Entertainment,Cinema Tickets,want
+10.12,2025-03-14,Entertainment,Cinema Tickets,want
+56.19,2025-03-14,Transportation,Petrol Station,need
+57.11,2025-03-14,Utilities,Electricity Bill,need
+34.8,2025-03-15,Personal Care,Pharmacy,need
+89.93,2025-03-15,Shopping,Bookshop,want
+418.45,2025-03-15,Travel,Flight Booking,want
+55.01,2025-03-15,Transportation,Bus Pass Kiosk,need
+129.9,2025-03-15,Education,Bookstore,want
+60.43,2025-03-16,Utilities,Water Bill,need
+93.56,2025-03-16,Groceries,Local Supermarket,need
+123.1,2025-03-16,Education,Online Course,need
+67.12,2025-03-16,Groceries,Local Supermarket,need
+167.65,2025-03-19,Education,Online Course,need
+57.23,2025-03-19,Transportation,Ride Sharing App,need
+44.33,2025-03-20,Transportation,Petrol Station,need
+83.18,2025-03-20,Shopping,Home Decor,want
+14.33,2025-03-21,Dining Out,Lunch Cafe,want
+430.77,2025-03-21,Travel,Train Ticket,want
+173.61,2025-03-22,Shopping,Clothing Store Sale,need
+50.1,2025-03-23,Transportation,Petrol Station,need
+26.56,2025-03-23,Entertainment,Concert Venue,want
+26.93,2025-03-23,Transportation,Petrol Station,need
+38.24,2025-03-24,Personal Care,Haircut,want
+62.41,2025-03-25,Entertainment,Cinema Tickets,want
+137.17,2025-03-26,Health,Doctor Visit,need
+453.2,2025-03-27,Travel,Train Ticket,want
+138.9,2025-03-27,Shopping,Online Electronics,want
+92.05,2025-03-28,Health,Therapy Session,need
+53.0,2025-03-28,Transportation,Ride Sharing App,need
+141.83,2025-03-28,Health,Therapy Session,need
+36.41,2025-03-29,Personal Care,Haircut,want
+59.04,2025-03-29,Utilities,Electricity Bill,need
+36.44,2025-03-30,Dining Out,Sushi Bar,want
+32.4,2025-03-30,Shopping,Clothing Store Sale,need
+77.93,2025-03-30,Groceries,Local Supermarket,need
+98.64,2025-03-30,Utilities,Electricity Bill,need
+178.39,2025-03-30,Shopping,Clothing Store Sale,need
+17.97,2025-04-01,Education,Bookstore,want
+61.31,2025-04-01,Utilities,Electricity Bill,need
+12.57,2025-04-01,Dining Out,Fast Food Z,want
+26.84,2025-04-01,Entertainment,Cinema Tickets,want
+39.47,2025-04-01,Transportation,Petrol Station,need
+87.68,2025-04-01,Entertainment,Streaming Service Subscription,want
+56.11,2025-04-02,Education,Bookstore,want
+43.66,2025-04-03,Personal Care,Haircut,want
+143.63,2025-04-03,Utilities,Internet Provider,need
+117.39,2025-04-03,Utilities,Electricity Bill,need
+36.29,2025-04-04,Shopping,Clothing Store Sale,need
+58.72,2025-04-05,Utilities,Internet Provider,need
+115.21,2025-04-06,Education,Workshop Fee,need
+61.16,2025-04-07,Travel,Flight Booking,want
+18.78,2025-04-08,Dining Out,Lunch Cafe,want
+31.0,2025-04-08,Dining Out,Lunch Cafe,want
+35.89,2025-04-09,Transportation,Bus Pass Kiosk,need
+35.35,2025-04-10,Transportation,Ride Sharing App,need
+25.06,2025-04-10,Transportation,Petrol Station,need
+350.81,2025-04-11,Travel,Train Ticket,want
+29.04,2025-04-11,Transportation,Bus Pass Kiosk,need
+38.46,2025-04-12,Dining Out,Lunch Cafe,want
+382.14,2025-04-12,Travel,Train Ticket,want
+58.21,2025-04-13,Groceries,Supermarket A,need
+77.19,2025-04-13,Utilities,Water Bill,need
+439.23,2025-04-13,Travel,Flight Booking,want
+5.77,2025-04-13,Dining Out,Pizzeria Bella,want
+26.64,2025-04-13,Transportation,Ride Sharing App,need
+387.86,2025-04-15,Travel,Train Ticket,want
+31.11,2025-04-15,Personal Care,Pharmacy,need
+179.32,2025-04-15,Travel,Hotel Stay,want
+32.22,2025-04-15,Transportation,Bus Pass Kiosk,need
+32.66,2025-04-15,Dining Out,Sushi Bar,want
+39.35,2025-04-16,Personal Care,Spa Center,want
+61.0,2025-04-16,Personal Care,Spa Center,want
+41.21,2025-04-16,Groceries,Grocery Store B,need
+106.25,2025-04-18,Education,Online Course,need
+14.78,2025-04-18,Personal Care,Pharmacy,need
+18.08,2025-04-19,Entertainment,Concert Venue,want
+195.9,2025-04-19,Travel,Train Ticket,want
+126.25,2025-04-19,Health,Therapy Session,need
+11.3,2025-04-20,Transportation,Bus Pass Kiosk,need
+55.02,2025-04-20,Personal Care,Spa Center,want
+451.63,2025-04-20,Travel,Hotel Stay,want
+7.16,2025-04-20,Personal Care,Pharmacy,need
+90.14,2025-04-20,Entertainment,Streaming Service Subscription,want
+59.57,2025-04-21,Utilities,Water Bill,need
+70.38,2025-04-21,Personal Care,Pharmacy,need
+87.37,2025-04-22,Groceries,Local Supermarket,need
+108.52,2025-04-23,Utilities,Electricity Bill,need
+43.06,2025-04-24,Groceries,Local Supermarket,need
+147.09,2025-04-25,Health,Therapy Session,need
+53.49,2025-04-26,Utilities,Water Bill,need
+31.39,2025-04-26,Education,Workshop Fee,need
+14.61,2025-04-27,Dining Out,Coffee Shop Downtown,want
+91.52,2025-04-27,Utilities,Electricity Bill,need
+40.4,2025-04-28,Transportation,Ride Sharing App,need
+99.07,2025-04-28,Shopping,Online Electronics,want
+22.29,2025-04-29,Dining Out,Pizzeria Bella,want
+44.54,2025-04-30,Utilities,Internet Provider,need
+107.7,2025-04-30,Utilities,Electricity Bill,need
+44.5,2025-04-30,Personal Care,Spa Center,want
+136.65,2025-04-30,Shopping,Online Electronics,want
+9.94,2025-04-30,Dining Out,Sushi Bar,want
+132.27,2025-05-01,Utilities,Water Bill,need
+95.74,2025-05-01,Health,Doctor Visit,need
+54.71,2025-05-02,Education,Online Course,need
+194.54,2025-05-03,Travel,Hotel Stay,want
+92.78,2025-05-03,Health,Doctor Visit,need
+6.34,2025-05-04,Dining Out,Sushi Bar,want
+33.71,2025-05-04,Transportation,Bus Pass Kiosk,need
+74.3,2025-05-04,Utilities,Electricity Bill,need
+147.43,2025-05-06,Utilities,Electricity Bill,need
+32.24,2025-05-06,Health,Therapy Session,need
+59.49,2025-05-06,Entertainment,Concert Venue,want
+160.6,2025-05-07,Education,Bookstore,want
+95.14,2025-05-07,Groceries,Grocery Store B,need
+144.19,2025-05-07,Shopping,Clothing Store Sale,need
+84.33,2025-05-08,Health,Therapy Session,need
+14.17,2025-05-08,Personal Care,Haircut,want
+76.25,2025-05-08,Groceries,Supermarket A,need
+61.88,2025-05-09,Groceries,Grocery Store B,need
+80.15,2025-05-09,Health,Gym Membership,need
+8.21,2025-05-10,Dining Out,Lunch Cafe,want
+46.48,2025-05-10,Entertainment,Streaming Service Subscription,want
+7.36,2025-05-11,Dining Out,Sushi Bar,want
+33.82,2025-05-12,Dining Out,Fast Food Z,want
+78.05,2025-05-12,Health,Therapy Session,need
+355.91,2025-05-13,Travel,Train Ticket,want
+63.45,2025-05-13,Groceries,Grocery Store B,need
+38.7,2025-05-14,Groceries,Grocery Store B,need
