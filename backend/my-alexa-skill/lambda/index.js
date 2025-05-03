@@ -59,10 +59,10 @@ export const handler = async (event, context) => {
         return handleIntentRequest(event);
       }
       else if (requestType === "SessionEndedRequest") {
-        return buildResponse("¡Hasta pronto!", true);
+        return buildResponse("See you soon!", true);
       }
       else {
-        return buildResponse("No entiendo ese tipo de solicitud. Por favor, intenta de nuevo.");
+        return buildResponse("I don't understand that type of request. Please try again.");
       }
     } else {
       // Not an Alexa request
@@ -73,7 +73,7 @@ export const handler = async (event, context) => {
     }
   } catch (error) {
     console.error('❌ Error:', error);
-    return buildResponse("Lo siento, ha ocurrido un error procesando tu solicitud. Por favor, intenta de nuevo más tarde.");
+    return buildResponse("I'm sorry, there was an error processing your request. Please try again later.");
   }
 };
 
@@ -85,12 +85,12 @@ async function handleLaunchRequest() {
   if (initializeError) {
     console.warn('⚠️ Initialization error detected at launch:', initializeError);
     return buildResponse(
-      "Bienvenido a tu asistente financiero. Estamos experimentando problemas técnicos en este momento. Nuestro equipo está trabajando para resolverlos lo antes posible."
+      "Welcome to your Financial Assistant. We're experiencing some technical issues at the moment. Our team is working to resolve them as soon as possible."
     );
   }
   
   return buildResponse(
-    "Bienvenido a tu asistente financiero. Puedo ayudarte a consultar tus gastos, analizar tus finanzas o responder a preguntas sobre tus hábitos de consumo. ¿En qué puedo ayudarte hoy?"
+    "Welcome to your Financial Assistant! What can I help you with today?"
   );
 }
 
@@ -104,7 +104,7 @@ async function handleIntentRequest(event) {
   if (intentName === "ConversacionIntent") {
     const mensaje = intent?.slots?.mensaje?.value;
     if (!mensaje) {
-      return buildResponse("No he entendido tu consulta. ¿Podrías reformularla?");
+      return buildResponse("I didn't quite catch that. Could you rephrase your question?");
     }
     
     console.log(`📝 User message: "${mensaje}"`);
@@ -112,7 +112,7 @@ async function handleIntentRequest(event) {
     // Check if there was an initialization error
     if (initializeError) {
       console.warn('⚠️ Initialization error detected:', initializeError);
-      return buildResponse("Lo siento, estamos experimentando problemas técnicos en este momento. Por favor, intenta más tarde.");
+      return buildResponse("I'm sorry, we're experiencing technical difficulties right now. Please try again later.");
     }
     
     // Get financial data from S3
@@ -125,7 +125,7 @@ async function handleIntentRequest(event) {
       
     } catch (error) {
       console.error('❌ Error getting data or processing with AI:', error);
-      return buildResponse("No he podido acceder a tus datos financieros en este momento. Por favor, intenta de nuevo más tarde.");
+      return buildResponse("I couldn't access your financial data right now. Please try again later.");
     }
   }
   else if (intentName === "DiagnosticIntent") {
@@ -144,33 +144,33 @@ async function handleIntentRequest(event) {
       // Format results for Alexa response
       let responseText = "";
       if (s3Test.success && geminiTest.success) {
-        responseText = "Todos los diagnósticos pasaron correctamente. La conexión a S3 y Gemini está funcionando.";
+        responseText = "All diagnostics passed successfully. Both S3 and Gemini connections are working properly.";
       } else {
-        responseText = "Se encontraron problemas en el diagnóstico. ";
+        responseText = "Some issues were found during diagnostics. ";
         if (!s3Test.success) {
-          responseText += "Error en S3: " + s3Test.error + ". ";
+          responseText += "S3 Error: " + s3Test.error + ". ";
         }
         if (!geminiTest.success) {
-          responseText += "Error en Gemini: " + geminiTest.error + ". ";
+          responseText += "Gemini Error: " + geminiTest.error + ". ";
         }
       }
       
       return buildResponse(responseText);
     } catch (diagError) {
       console.error('❌ Diagnostic error:', diagError);
-      return buildResponse("Error al ejecutar diagnósticos. Revisa los registros de CloudWatch para más detalles.");
+      return buildResponse("Error running diagnostics. Please check CloudWatch logs for more details.");
     }
   }
   else if (intentName === "AMAZON.HelpIntent") {
     return buildResponse(
-      "Puedes preguntarme sobre tus gastos, como por ejemplo '¿cuánto he gastado en transporte?' o '¿cuáles son mis gastos principales?'. También puedes preguntar sobre gastos por necesidad versus deseos."
+      "You can ask me about your spending, like 'how much did I spend on transportation?' or 'what are my main expenses?' You can also ask about needs versus wants in your spending habits."
     );
   }
   else if (intentName === "AMAZON.StopIntent" || intentName === "AMAZON.CancelIntent") {
-    return buildResponse("¡Hasta pronto! Estoy aquí cuando necesites revisar tus finanzas.", true);
+    return buildResponse("See you soon! I'm here whenever you need to review your finances.", true);
   }
   else {
-    return buildResponse("No reconozco esa instrucción. ¿Puedes decirlo de otra manera?");
+    return buildResponse("I don't recognize that instruction. Can you say it differently?");
   }
 }
 
@@ -225,6 +225,7 @@ async function getTransactionsFromS3() {
       header: true,
       skipEmptyLines: true,
       dynamicTyping: true,
+      trimHeaders: true, // Trim whitespace from headers
       error: (error) => {
         console.error('❌ CSV parsing error:', error);
       }
@@ -241,10 +242,13 @@ async function getTransactionsFromS3() {
     if (parseResult.data.length > 0) {
       const firstRow = parseResult.data[0];
       const requiredFields = ['amount', 'date', 'category'];
-      const missingFields = requiredFields.filter(field => 
-        firstRow[field] === undefined && 
-        firstRow[field.toLowerCase()] === undefined
-      );
+      const missingFields = requiredFields.filter(field => {
+        // Check for field in both original and lowercase form
+        const fieldExists = parseResult.meta.fields.some(header => 
+          header.toLowerCase() === field.toLowerCase()
+        );
+        return !fieldExists;
+      });
       
       if (missingFields.length > 0) {
         console.error(`❌ Missing required fields in CSV: ${missingFields.join(', ')}`);
@@ -265,12 +269,14 @@ async function getTransactionsFromS3() {
       }
       
       try {
-        // Handle possible column name variations
+        // Handle possible column name variations with case-insensitive matching
         const amount = tx.amount || tx.Amount || 0;
         const date = tx.date || tx.Date || 'unknown';
         const category = tx.category || tx.Category || 'uncategorized';
         const description = tx.description || tx['description/merchant'] || '';
-        const expenseType = tx.expense_type || tx.expenseType || 'unknown';
+        
+        // Get the predicted expense type from CSV (matches your sample data)
+        const predictedExpenseType = tx.predicted_expense_type || tx.predictedExpenseType || 'unknown';
         
         // Validate amount is a number
         if (typeof amount !== 'number') {
@@ -282,7 +288,7 @@ async function getTransactionsFromS3() {
           date: date,
           category: category,
           description: description,
-          expenseType: expenseType
+          expenseType: predictedExpenseType // Updated to use predicted_expense_type from CSV
         });
       } catch (rowErr) {
         console.error(`❌ Error processing row ${i+1}:`, rowErr, tx);
@@ -316,12 +322,12 @@ async function processWithAI(userQuery, transactionData) {
     // Validate input data
     if (!userQuery || typeof userQuery !== 'string') {
       console.error('❌ Invalid userQuery:', userQuery);
-      return "No he entendido tu consulta. ¿Podrías reformularla?";
+      return "I didn't understand your question. Could you rephrase it?";
     }
     
     if (!transactionData || !Array.isArray(transactionData) || transactionData.length === 0) {
       console.error('❌ Invalid or empty transactionData:', transactionData);
-      return "No tengo datos financieros disponibles para analizar en este momento.";
+      return "I don't have any financial data available for analysis right now.";
     }
     
     console.log(`🔍 Processing user query: "${userQuery}" with ${transactionData.length} transactions`);
@@ -329,7 +335,7 @@ async function processWithAI(userQuery, transactionData) {
     // Validate we have a working API key
     if (!GEMINI_API_KEY) {
       console.error('❌ Gemini API key missing');
-      return "No puedo procesar tu consulta en este momento debido a un problema de configuración.";
+      return "I can't process your query right now due to a configuration issue.";
     }
     
     // Filter for valid transactions
@@ -339,75 +345,116 @@ async function processWithAI(userQuery, transactionData) {
     
     if (validTransactions.length === 0) {
       console.error('❌ No valid transactions found after filtering');
-      return "No he encontrado transacciones válidas para analizar.";
+      return "I couldn't find any valid transactions to analyze.";
     }
     
-    // Get current date and calculate date 30 days ago
+    // Get current date and calculate date ranges
     const currentDate = new Date();
-    const thirtyDaysAgo = new Date();
-    thirtyDaysAgo.setDate(currentDate.getDate() - 30);
     
-    console.log(`🔍 Filtering transactions from ${thirtyDaysAgo.toISOString().split('T')[0]} to ${currentDate.toISOString().split('T')[0]}`);
-    
-    // Filter transactions for the last 30 days
-    const recentTransactions = validTransactions.filter(tx => {
+    // Parse all transaction dates first to avoid repeated parsing
+    const transactionsWithParsedDates = validTransactions.map(tx => {
       try {
-        // Handle different date formats that might be in the data
-        const txDate = new Date(tx.date);
-        return !isNaN(txDate.getTime()) && txDate >= thirtyDaysAgo && txDate <= currentDate;
+        const parsedDate = new Date(tx.date);
+        return {
+          ...tx,
+          parsedDate: !isNaN(parsedDate.getTime()) ? parsedDate : null
+        };
       } catch (dateError) {
         console.warn(`⚠️ Could not parse date: ${tx.date}`, dateError);
-        return false;
+        return {
+          ...tx,
+          parsedDate: null
+        };
       }
-    });
+    }).filter(tx => tx.parsedDate !== null);
     
-    console.log(`📊 Found ${recentTransactions.length} transactions in the last 30 days`);
-    
-    if (recentTransactions.length === 0) {
-      console.warn('⚠️ No transactions found in the last 30 days');
-      return "No he encontrado transacciones en los últimos 30 días para analizar.";
+    if (transactionsWithParsedDates.length === 0) {
+      console.error('❌ No transactions with valid dates found');
+      return "I couldn't find any transactions with valid dates to analyze.";
     }
     
-    // Calculate date range for context
-    const sortedDates = recentTransactions
-      .map(tx => new Date(tx.date))
-      .filter(date => !isNaN(date.getTime()))
-      .sort((a, b) => a - b);
+    // Sort transactions by date (newest first)
+    transactionsWithParsedDates.sort((a, b) => b.parsedDate - a.parsedDate);
     
-    const fechaInicio = sortedDates.length > 0 
-      ? sortedDates[0].toISOString().split('T')[0] 
-      : 'desconocida';
-    const fechaFin = sortedDates.length > 0 
-      ? sortedDates[sortedDates.length - 1].toISOString().split('T')[0] 
-      : 'desconocida';
+    // Determine date range from the data itself
+    const newestDate = transactionsWithParsedDates[0].parsedDate;
+    const oldestDate = transactionsWithParsedDates[transactionsWithParsedDates.length - 1].parsedDate;
     
-    // Format the raw transaction data to send to the AI
-    // Remove any sensitive information if needed
-    const cleanTransactions = recentTransactions.map(tx => ({
+    console.log(`📊 Transaction date range: ${oldestDate.toISOString().split('T')[0]} to ${newestDate.toISOString().split('T')[0]}`);
+    
+    // Calculate week and month ranges based on the newest transaction date
+    // This ensures we have data even if "current date" is newer than our data
+    const oneWeekAgo = new Date(newestDate);
+    oneWeekAgo.setDate(newestDate.getDate() - 7);
+    
+    const oneMonthAgo = new Date(newestDate);
+    oneMonthAgo.setMonth(newestDate.getMonth() - 1);
+    
+    // Filter for different time periods
+    const lastWeekTransactions = transactionsWithParsedDates.filter(tx => 
+      tx.parsedDate >= oneWeekAgo && tx.parsedDate <= newestDate
+    );
+    
+    const lastMonthTransactions = transactionsWithParsedDates.filter(tx => 
+      tx.parsedDate >= oneMonthAgo && tx.parsedDate <= newestDate
+    );
+    
+    // Use all transactions by default, but provide week/month filters in context
+    const allTransactions = transactionsWithParsedDates;
+    
+    console.log(`📊 Found:
+      - ${allTransactions.length} total transactions
+      - ${lastWeekTransactions.length} transactions in the last week
+      - ${lastMonthTransactions.length} transactions in the last month`);
+    
+    // Format the transactions for AI processing (removing parsed date)
+    const formatForAI = (transactions) => transactions.map(tx => ({
       amount: tx.amount,
       date: tx.date,
-      category: tx.category || 'Sin categoría',
-      description: tx.description || 'Sin descripción',
+      category: tx.category || 'Uncategorized',
+      description: tx.description || 'No description',
       expenseType: tx.expenseType || 'unknown'
     }));
     
-    // Build prompt for AI with all raw transaction data
+    // Prepare three versions of data for different time periods
+    const allTxData = formatForAI(allTransactions);
+    const lastWeekTxData = formatForAI(lastWeekTransactions);
+    const lastMonthTxData = formatForAI(lastMonthTransactions);
+    
+    // Build prompt for AI with context about available time periods
     const prompt = `
-Eres un asistente financiero personal que analiza gastos de una persona.
+You are a friendly and helpful personal financial assistant analyzing a person's spending habits. Be conversational, relatable, and sound like a real assistant (not a robot).
 
-DATOS FINANCIEROS DEL USUARIO DE LOS ÚLTIMOS 30 DÍAS (${fechaInicio} a ${fechaFin}):
-${JSON.stringify(cleanTransactions, null, 2)}
+USER'S FINANCIAL DATA:
+Full date range: ${oldestDate.toISOString().split('T')[0]} to ${newestDate.toISOString().split('T')[0]}
+Last week: ${oneWeekAgo.toISOString().split('T')[0]} to ${newestDate.toISOString().split('T')[0]} (${lastWeekTransactions.length} transactions)
+Last month: ${oneMonthAgo.toISOString().split('T')[0]} to ${newestDate.toISOString().split('T')[0]} (${lastMonthTransactions.length} transactions)
 
-La consulta del usuario es: "${userQuery}"
+ALL TRANSACTIONS (${allTransactions.length} total):
+${JSON.stringify(allTxData, null, 2)}
 
-Instrucciones:
-1. Analiza detenidamente todos los datos de transacciones proporcionados para responder a la consulta específica.
-2. Utiliza datos precisos y cálculos exactos basados en los datos raw proporcionados.
-3. Sé conversacional, útil y conciso. 
-4. Limita tu respuesta a máximo 3 frases ya que esto será convertido en voz.
-5. Si te preguntan sobre datos que no tienes, menciona que solo tienes información sobre gastos en el período indicado.
-6. Al hablar de cantidades de dinero, redondea a números enteros para facilitar la comprensión.
-7. NO intentes resumir todas las transacciones, solo responde exactamente a lo que pregunta el usuario.
+LAST WEEK TRANSACTIONS (${lastWeekTransactions.length} total):
+${JSON.stringify(lastWeekTxData, null, 2)}
+
+LAST MONTH TRANSACTIONS (${lastMonthTransactions.length} total):
+${JSON.stringify(lastMonthTxData, null, 2)}
+
+The user's question is: "${userQuery}"
+
+Instructions:
+1. First determine which time period the user is asking about:
+   - If they ask about "last week" or "this week", use LAST WEEK TRANSACTIONS
+   - If they ask about "last month" or "this month", use LAST MONTH TRANSACTIONS
+   - If they ask about a specific date range, filter the ALL TRANSACTIONS to match that range
+   - If they don't specify a time period, use LAST MONTH TRANSACTIONS by default
+2. Carefully analyze the appropriate transaction data to specifically address the user's question.
+3. Use precise data and exact calculations based on the raw data provided.
+4. Be conversational, helpful, and concise. Sound like a friendly assistant, not a robot.
+5. Limit your response to a maximum of 3 sentences since this will be converted to speech.
+6. When mentioning expense categories, provide specific examples of what might be in those categories.
+7. If asked about data you don't have, mention the date range you do have data for.
+8. When talking about money amounts, round to whole numbers for easier understanding.
+9. Use a natural, friendly tone with contractions (I've, you've, we're) and conversational phrases.
 `;
 
     // Log prompt size for debugging
@@ -416,7 +463,7 @@ Instrucciones:
       console.log('🤖 Sample of prompt:', prompt.substring(0, 500) + '...');
     }
 
-    // Call Gemini API directly using HTTPS
+    // Call Gemini API
     try {
       const response = await callGeminiAPI(prompt);
       console.log(`🤖 AI Response: "${response}"`);
@@ -429,57 +476,69 @@ Instrucciones:
       if (Buffer.byteLength(prompt, 'utf8') > 100000) { // Arbitrary limit, adjust based on actual Gemini limits
         console.error('❌ Prompt might be too large:', Buffer.byteLength(prompt, 'utf8'), 'bytes');
         
-        // Try with a smaller subset of data if available
-        if (recentTransactions.length > 50) {
-          console.log('🔄 Retrying with reduced dataset');
-          
-          // Take most recent 50 transactions
-          const reducedTransactions = recentTransactions
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
-            .slice(0, 50);
-          
-          const reducedPrompt = `
-Eres un asistente financiero personal que analiza gastos de una persona.
+        // Try with a smaller subset of data - just use the most relevant time period
+        console.log('🔄 Retrying with reduced dataset');
+        
+        // Determine which data is most relevant based on the query
+        let relevantData;
+        const queryLower = userQuery.toLowerCase();
+        
+        if (queryLower.includes('week') || queryLower.includes('7 days')) {
+          relevantData = lastWeekTxData;
+          console.log('🔍 Using week data for reduced prompt');
+        } else if (queryLower.includes('month') || queryLower.includes('30 days')) {
+          relevantData = lastMonthTxData;
+          console.log('🔍 Using month data for reduced prompt');
+        } else {
+          // Default to month data, but limit to 50 transactions if needed
+          relevantData = lastMonthTxData.length > 50 ? lastMonthTxData.slice(0, 50) : lastMonthTxData;
+          console.log('🔍 Using default (month) data for reduced prompt');
+        }
+        
+        const reducedPrompt = `
+You are a friendly and helpful personal financial assistant analyzing a person's spending habits. Be conversational, relatable, and sound like a real assistant (not a robot).
 
-DATOS FINANCIEROS DEL USUARIO DE LOS ÚLTIMOS 30 DÍAS (${fechaInicio} a ${fechaFin}):
-NOTA: Debido a limitaciones técnicas, solo mostrando las 50 transacciones más recientes.
-${JSON.stringify(reducedTransactions, null, 2)}
+USER'S FINANCIAL DATA:
+Full date range: ${oldestDate.toISOString().split('T')[0]} to ${newestDate.toISOString().split('T')[0]}
 
-La consulta del usuario es: "${userQuery}"
+TRANSACTIONS (${relevantData.length} total):
+${JSON.stringify(relevantData, null, 2)}
 
-Instrucciones:
-1. Analiza detenidamente todos los datos de transacciones proporcionados para responder a la consulta específica.
-2. Utiliza datos precisos y cálculos exactos basados en los datos proporcionados.
-3. Sé conversacional, útil y conciso. 
-4. Limita tu respuesta a máximo 3 frases ya que esto será convertido en voz.
-5. Si te preguntan sobre datos que no tienes, menciona que solo tienes información sobre las transacciones más recientes.
-6. Al hablar de cantidades de dinero, redondea a números enteros para facilitar la comprensión.
+The user's question is: "${userQuery}"
+
+Instructions:
+1. Carefully analyze the transaction data provided to specifically address the user's question.
+2. Use precise data and exact calculations based on the provided data.
+3. Be conversational, helpful, and concise. Sound like a friendly assistant, not a robot.
+4. Limit your response to a maximum of 3 sentences since this will be converted to speech.
+5. If asked about data you don't have, mention the date range you do have data for.
+6. When talking about money amounts, round to whole numbers for easier understanding.
+7. Use a natural, friendly tone with contractions (I've, you've, we're) and conversational phrases.
 `;
           
-          try {
-            const reducedResponse = await callGeminiAPI(reducedPrompt);
-            return reducedResponse;
-          } catch (reducedError) {
-            console.error('❌ Error with reduced dataset:', reducedError);
-            return "No he podido analizar tus datos financieros en este momento debido a limitaciones técnicas. Por favor, intenta una consulta más específica.";
-          }
+        try {
+          const reducedResponse = await callGeminiAPI(reducedPrompt);
+          return reducedResponse;
+        } catch (reducedError) {
+          console.error('❌ Error with reduced dataset:', reducedError);
+          return "I couldn't analyze your financial data right now due to technical limitations. Could you try asking something more specific?";
         }
       }
       
       // Handle different types of Gemini errors
       if (geminiError.message && geminiError.message.includes('UNAUTHENTICATED')) {
         console.error('❌ Authentication error with Gemini API. Check API key.');
-        return "No puedo acceder al servicio de análisis en este momento debido a un problema de autenticación.";
+        return "I can't access the analysis service right now due to an authentication issue.";
       } else if (geminiError.message && geminiError.message.includes('RESOURCE_EXHAUSTED')) {
         console.error('❌ Rate limit exceeded in Gemini API.');
-        return "Estoy experimentando demasiadas solicitudes en este momento. Por favor, intenta de nuevo en unos minutos.";
+        return "I'm experiencing too many requests right now. Could you try again in a few minutes?";
       } else {
-        return "No he podido analizar tus datos financieros en este momento. Por favor, intenta de nuevo más tarde.";
+        return "I couldn't analyze your financial data right now. Please try again later.";
       }
     }
   } catch (error) {
     console.error('❌ General error in processWithAI:', error);
-    return "He tenido un problema al procesar tu consulta. Por favor, intenta de nuevo con una pregunta diferente.";
+    return "I had a problem processing your question. Could you try asking something different?";
   }
 }
 
@@ -661,7 +720,7 @@ function buildResponse(speechText, endSession = false) {
       },
       card: {
         type: "Simple",
-        title: "Asistente Financiero",
+        title: "Financial Assistant",
         content: speechText
       },
       shouldEndSession: endSession
