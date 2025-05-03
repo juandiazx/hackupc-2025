@@ -1,9 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import "tailwindcss";
 
 @theme {
   --color-primary: #F0F0F0;
+  --color-white: #F1F1F1;
   --color-black: #050A0F;
+  --color-container: #02203D;
 }
 
 :root {
@@ -14,7 +16,7 @@
   color-scheme: light dark;
 
   @apply text-primary;
-  @apply bg-gradient-to-b from-[#007FFF] to-[#101B25] to-25%;
+  @apply bg-gradient-to-b from-[#007FFF] to-[#001021] to-25%;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -22,8 +24,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2 {
-  font-family: 'Oxanium', 'Winky Sans', sans-serif;
+button {
+  @apply cursor-pointer;
+  @apply transition-all duration-300 ease-in-out;
+  @apply active:scale-95 active:brightness-80
+}
+
+h1, h2, h3 {
+  font-family: 'Inter', 'Winky Sans', sans-serif;
 }
 
 h1 {
@@ -33,6 +41,10 @@ h1 {
 
 h2 {
   @apply text-3xl font-semibold mt-8 mb-12;
+}
+
+h3 {
+  @apply font-medium;
 }
 
 @media (prefers-color-scheme: light) {
