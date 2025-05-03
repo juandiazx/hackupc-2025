@@ -1,0 +1,100 @@
+amount,date,category,description/merchant
+99.82,2023-05-01,Education,Online Course
+25.88,2023-05-01,Education,Bookstore
+74.31,2023-05-01,Entertainment,Cinema Tickets
+74.07,2023-05-02,Entertainment,Concert Venue
+27.32,2023-05-02,Transportation,Petrol Station
+174.12,2023-05-03,Shopping,Home Decor
+219.96,2023-05-03,Education,Bookstore
+49.87,2023-05-04,Shopping,Online Electronics
+44.92,2023-05-04,Personal Care,Pharmacy
+39.17,2023-05-06,Dining Out,Fast Food Z
+8.33,2023-05-06,Dining Out,Fast Food Z
+55.01,2023-05-06,Entertainment,Cinema Tickets
+91.06,2023-05-06,Groceries,Supermarket A
+59.11,2023-05-06,Transportation,Bus Pass Kiosk
+47.38,2023-05-07,Groceries,Grocery Store B
+31.71,2023-05-07,Utilities,Water Bill
+197.24,2023-05-07,Education,Online Course
+61.52,2023-05-07,Health,Gym Membership
+32.65,2023-05-09,Dining Out,Sushi Bar
+35.64,2023-05-10,Dining Out,Fast Food Z
+38.38,2023-05-10,Personal Care,Haircut
+82.18,2023-05-11,Health,Therapy Session
+19.74,2023-05-11,Transportation,Bus Pass Kiosk
+363.68,2023-05-12,Travel,Flight Booking
+453.5,2023-05-12,Travel,Flight Booking
+31.33,2023-05-12,Entertainment,Streaming Service Subscription
+44.26,2023-05-13,Entertainment,Cinema Tickets
+91.13,2023-05-13,Groceries,Grocery Store B
+84.18,2023-05-13,Entertainment,Concert Venue
+48.79,2023-05-14,Personal Care,Haircut
+5.38,2023-05-14,Personal Care,Spa Center
+142.62,2023-05-14,Shopping,Online Electronics
+21.41,2023-05-14,Education,Bookstore
+92.76,2023-05-14,Entertainment,Concert Venue
+63.57,2023-05-15,Entertainment,Concert Venue
+241.16,2023-05-15,Education,Workshop Fee
+109.31,2023-05-15,Groceries,Local Supermarket
+56.77,2023-05-15,Utilities,Electricity Bill
+233.08,2023-05-15,Education,Bookstore
+53.86,2023-05-15,Personal Care,Haircut
+387.33,2023-05-16,Travel,Flight Booking
+58.37,2023-05-16,Groceries,Supermarket A
+97.68,2023-05-16,Entertainment,Streaming Service Subscription
+79.62,2023-05-18,Personal Care,Pharmacy
+166.1,2023-05-18,Shopping,Bookshop
+36.1,2023-05-20,Health,Gym Membership
+60.99,2023-05-21,Personal Care,Pharmacy
+72.89,2023-05-22,Entertainment,Cinema Tickets
+95.26,2023-05-23,Travel,Flight Booking
+38.48,2023-05-23,Personal Care,Spa Center
+144.41,2023-05-24,Health,Therapy Session
+349.71,2023-05-24,Travel,Flight Booking
+484.54,2023-05-25,Travel,Train Ticket
+63.43,2023-05-27,Groceries,Grocery Store B
+123.6,2023-05-27,Travel,Hotel Stay
+24.84,2023-05-27,Groceries,Supermarket A
+40.43,2023-05-27,Personal Care,Pharmacy
+170.03,2023-05-27,Shopping,Online Electronics
+415.79,2023-05-28,Travel,Flight Booking
+27.71,2023-05-28,Transportation,Petrol Station
+80.82,2023-05-28,Education,Online Course
+417.92,2023-05-28,Travel,Train Ticket
+40.15,2023-05-29,Transportation,Petrol Station
+64.65,2023-05-30,Entertainment,Concert Venue
+47.2,2023-05-30,Entertainment,Concert Venue
+31.03,2023-05-30,Dining Out,Pizzeria Bella
+33.23,2023-05-30,Groceries,Grocery Store B
+100.84,2023-06-01,Groceries,Supermarket A
+16.86,2023-06-01,Entertainment,Streaming Service Subscription
+85.18,2023-06-01,Travel,Flight Booking
+126.68,2023-06-01,Shopping,Home Decor
+464.12,2023-06-01,Travel,Train Ticket
+25.31,2023-06-01,Entertainment,Concert Venue
+162.43,2023-06-02,Education,Online Course
+374.41,2023-06-03,Travel,Flight Booking
+46.22,2023-06-03,Groceries,Supermarket A
+188.54,2023-06-03,Education,Online Course
+128.74,2023-06-03,Health,Therapy Session
+52.64,2023-06-04,Groceries,Supermarket A
+24.51,2023-06-04,Personal Care,Spa Center
+118.14,2023-06-05,Education,Workshop Fee
+22.53,2023-06-05,Personal Care,Pharmacy
+18.6,2023-06-06,Personal Care,Spa Center
+34.19,2023-06-06,Dining Out,Fast Food Z
+68.27,2023-06-08,Groceries,Local Supermarket
+429.01,2023-06-08,Travel,Flight Booking
+51.85,2023-06-08,Transportation,Bus Pass Kiosk
+29.85,2023-06-09,Health,Therapy Session
+120.87,2023-06-10,Education,Bookstore
+49.85,2023-06-11,Utilities,Water Bill
+139.33,2023-06-11,Utilities,Electricity Bill
+59.17,2023-06-13,Groceries,Supermarket A
+52.71,2023-06-14,Utilities,Water Bill
+119.6,2023-06-14,Groceries,Local Supermarket
+39.32,2023-06-15,Dining Out,Sushi Bar
+111.12,2023-06-15,Health,Gym Membership
+142.3,2023-06-15,Utilities,Electricity Bill
+109.29,2023-06-16,Travel,Train Ticket
+147.75,2023-06-16,Utilities,Electricity Bill

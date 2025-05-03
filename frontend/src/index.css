@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #F0F0F0;
+  --color-black: #050A0F;
+}
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+
+  @apply text-primary;
+  @apply bg-gradient-to-b from-[#007FFF] to-[#101B25] to-25%;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2 {
+  font-family: 'Oxanium', 'Winky Sans', sans-serif;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+h2 {
+  @apply text-3xl font-semibold mt-8 mb-12;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    @apply text-primary bg-gradient-to-b from-[#B3D9FF] to-white;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @apply text-primary bg-gradient-to-b from-[#007FFF] to-[#101B25];
+  }
+}

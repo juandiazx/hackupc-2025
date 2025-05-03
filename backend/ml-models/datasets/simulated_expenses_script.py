@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 # --- Configuración ---
 start_date = datetime(2023, 5, 1)
-end_date = datetime(2025, 5, 4)
+end_date = datetime(2025, 5, 14)
 
 categories_merchants = {
     "Groceries": ["Local Supermarket", "Supermarket A", "Grocery Store B"],
