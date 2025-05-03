@@ -20,6 +20,9 @@ def handler(event, context):
     Returns:
         dict: API Gateway response with expense prediction data
     """
+    if event.get("httpMethod") == "OPTIONS":
+        return response_creator(200, "OK")
+
     action = event.get('queryStringParameters', {}).get('action', '')
 
     if action != 'classify-expenses' and action != 'predict-expenses':
