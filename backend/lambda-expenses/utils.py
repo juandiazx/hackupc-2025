@@ -33,13 +33,6 @@ def error_handler(e, message=None):
     return response_creator(500, {
         'error': error_msg
     })
-    """
-    Handle errors and return a formatted error message.
-    """
-    print(f"Error: {str(e)}")
-    return response_creator(500, {
-        'error': str(e)
-    })
 
 def create_s3_client():
     """

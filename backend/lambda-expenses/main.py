@@ -1,5 +1,3 @@
-import json
-import os
 from expenses_classifier import classify_expenses
 from expenses_predictor import predict_expenses
 from utils import error_handler, response_creator, create_s3_client, get_csv_data
@@ -22,7 +20,7 @@ def handler(event, context):
     Returns:
         dict: API Gateway response with expense prediction data
     """
-    action = os.environ.get('ACTION', 'invalid')
+    action = event.get('queryStringParameters', {}).get('action', '')
 
     if action != 'classify-expenses' and action != 'predict-expenses':
         return response_creator(400, "Invalid action specified.")
