@@ -27,7 +27,7 @@ def predict_expenses(s3_client, data, model_bucket):
     current_day = today.day
 
     # 📊 Generate snapshot just for today
-    snapshot_df = process_expense_data_snapshots(data, custom_snapshot_day=current_day)
+    snapshot_df = process_expense_data_snapshots(data) #, custom_snapshot_day=current_day
 
     # 🛑 No data? Avoid crash
     if snapshot_df.empty:
@@ -101,8 +101,10 @@ def process_expense_data_snapshots(df):
     df['month'] = df['date'].dt.month
     df['year'] = df['date'].dt.year
 
-    #ALERT Maybe bug here if expense_type does not exist
-    df = df.drop(['category', 'description/merchant', 'expense_type'], axis=1)
+    df = df.drop(['category', 'description/merchant'], axis=1)
+
+    if 'expense_type' in df.columns:
+        df = df.drop(columns=['expense_type'])
 
     # 🚀 Parameters
     snapshot_days = [5, 10, 15, 20, 25, 28]
