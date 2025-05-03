@@ -9,20 +9,15 @@
  * Required environment variables:
  * - BUCKET_NAME: Name of the S3 bucket containing transaction data
  * - TRANSACTIONS_FILE: Path to the CSV file in the S3 bucket
- * - OPENAI_API_KEY: API key for OpenAI
+ * - GEMINI_API_KEY: API key for Google Gemini AI
  * - DEBUG_MODE: Set to 'true' for additional logging (optional)
  */
 
 import AWS from 'aws-sdk';
 import Papa from 'papaparse'; // For CSV processing
-import { OpenAI } from 'openai'; // For AI integration
+import https from 'https';
 
 const s3 = new AWS.S3();
-
-// Configure OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY // Use environment variable
-});
 
 // S3 Configuration
 const BUCKET_NAME = process.env.BUCKET_NAME; // Your S3 bucket name
@@ -30,6 +25,18 @@ const TRANSACTIONS_FILE = process.env.TRANSACTIONS_FILE; // Path to CSV file in 
 
 // Enable debug mode
 const DEBUG_MODE = process.env.DEBUG_MODE === 'true';
+
+// Initialize Gemini client using direct HTTP requests instead of the library
+let initializeError = null;
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+
+// Check if API key is available
+if (!GEMINI_API_KEY) {
+  console.error('❌ Missing GEMINI_API_KEY environment variable');
+  initializeError = 'Missing GEMINI_API_KEY environment variable';
+} else {
+  console.log('✅ Gemini API key found');
+}
 
 /**
  * Main function that handles Alexa requests
@@ -74,6 +81,14 @@ export const handler = async (event, context) => {
  * Handles LaunchRequest (when user starts the skill)
  */
 async function handleLaunchRequest() {
+  // Check if there was an initialization error and inform the user if needed
+  if (initializeError) {
+    console.warn('⚠️ Initialization error detected at launch:', initializeError);
+    return buildResponse(
+      "Bienvenido a tu asistente financiero. Estamos experimentando problemas técnicos en este momento. Nuestro equipo está trabajando para resolverlos lo antes posible."
+    );
+  }
+  
   return buildResponse(
     "Bienvenido a tu asistente financiero. Puedo ayudarte a consultar tus gastos, analizar tus finanzas o responder a preguntas sobre tus hábitos de consumo. ¿En qué puedo ayudarte hoy?"
   );
@@ -94,6 +109,12 @@ async function handleIntentRequest(event) {
     
     console.log(`📝 User message: "${mensaje}"`);
     
+    // Check if there was an initialization error
+    if (initializeError) {
+      console.warn('⚠️ Initialization error detected:', initializeError);
+      return buildResponse("Lo siento, estamos experimentando problemas técnicos en este momento. Por favor, intenta más tarde.");
+    }
+    
     // Get financial data from S3
     try {
       const transactionData = await getTransactionsFromS3();
@@ -112,23 +133,25 @@ async function handleIntentRequest(event) {
       // Test S3 connection
       const s3Test = await testS3Connection();
       
-      // Test OpenAI connection if S3 is working
-      let openaiTest = { success: false, error: 'Not tested' };
-      if (s3Test.success) {
-        openaiTest = await testOpenAIConnection();
+      // Test Gemini connection if S3 is working
+      let geminiTest = { success: false, error: 'Not tested' };
+      if (!initializeError && s3Test.success) {
+        geminiTest = await testGeminiConnection();
+      } else if (initializeError) {
+        geminiTest = { success: false, error: initializeError };
       }
       
       // Format results for Alexa response
       let responseText = "";
-      if (s3Test.success && openaiTest.success) {
-        responseText = "Todos los diagnósticos pasaron correctamente. La conexión a S3 y OpenAI está funcionando.";
+      if (s3Test.success && geminiTest.success) {
+        responseText = "Todos los diagnósticos pasaron correctamente. La conexión a S3 y Gemini está funcionando.";
       } else {
         responseText = "Se encontraron problemas en el diagnóstico. ";
         if (!s3Test.success) {
           responseText += "Error en S3: " + s3Test.error + ". ";
         }
-        if (!openaiTest.success) {
-          responseText += "Error en OpenAI: " + openaiTest.error + ". ";
+        if (!geminiTest.success) {
+          responseText += "Error en Gemini: " + geminiTest.error + ". ";
         }
       }
       
@@ -287,6 +310,7 @@ async function getTransactionsFromS3() {
 
 /**
  * Process user query with AI using the financial data with improved error handling
+ * This version uses direct HTTPS calls instead of the Gemini library
  */
 async function processWithAI(userQuery, transactionData) {
   try {
@@ -303,9 +327,9 @@ async function processWithAI(userQuery, transactionData) {
     
     console.log(`🔍 Processing user query: "${userQuery}" with ${transactionData.length} transactions`);
     
-    // Validate OpenAI API key
-    if (!process.env.OPENAI_API_KEY) {
-      console.error('❌ Missing OpenAI API key');
+    // Validate we have a working API key
+    if (!GEMINI_API_KEY) {
+      console.error('❌ Gemini API key missing');
       return "No puedo procesar tu consulta en este momento debido a un problema de configuración.";
     }
     
@@ -411,35 +435,24 @@ Instrucciones:
 
     // Log prompt for debugging
     if (DEBUG_MODE) {
-      console.log('🤖 Prompt for OpenAI:', prompt);
+      console.log('🤖 Prompt for Gemini:', prompt);
     }
 
-    // Call OpenAI API with improved error handling
+    // Call Gemini API directly using HTTPS instead of the library
     try {
-      const aiResponse = await openai.chat.completions.create({
-        model: "gpt-4o", // Adjust according to the model you want to use
-        messages: [
-          { role: "system", content: prompt },
-          { role: "user", content: userQuery }
-        ],
-        max_tokens: 150, // Keep response short for Alexa
-        temperature: 0.7
-      });
+      const response = await callGeminiAPI(prompt);
+      console.log(`🤖 AI Response: "${response}"`);
       
-      // Extract response
-      const respuesta = aiResponse.choices[0].message.content.trim();
-      console.log(`🤖 AI Response: "${respuesta}"`);
+      return response;
+    } catch (geminiError) {
+      console.error('❌ Error in Gemini API call:', geminiError);
       
-      return respuesta;
-    } catch (openaiError) {
-      console.error('❌ Error in OpenAI API call:', openaiError);
-      
-      // Handle different types of OpenAI errors
-      if (openaiError.status === 401) {
-        console.error('❌ Authentication error with OpenAI API. Check API key.');
+      // Handle different types of Gemini errors
+      if (geminiError.message && geminiError.message.includes('UNAUTHENTICATED')) {
+        console.error('❌ Authentication error with Gemini API. Check API key.');
         return "No puedo acceder al servicio de análisis en este momento debido a un problema de autenticación.";
-      } else if (openaiError.status === 429) {
-        console.error('❌ Rate limit exceeded in OpenAI API.');
+      } else if (geminiError.message && geminiError.message.includes('RESOURCE_EXHAUSTED')) {
+        console.error('❌ Rate limit exceeded in Gemini API.');
         return "Estoy experimentando demasiadas solicitudes en este momento. Por favor, intenta de nuevo en unos minutos.";
       } else {
         return "No he podido analizar tus datos financieros en este momento. Por favor, intenta de nuevo más tarde.";
@@ -449,6 +462,93 @@ Instrucciones:
     console.error('❌ General error in processWithAI:', error);
     return "He tenido un problema al procesar tu consulta. Por favor, intenta de nuevo con una pregunta diferente.";
   }
+}
+
+/**
+ * Direct API call to Gemini API without using the library
+ */
+async function callGeminiAPI(prompt) {
+  return new Promise((resolve, reject) => {
+    // API endpoint for Gemini
+    const geminiEndpoint = 'generativelanguage.googleapis.com';
+    const path = `/v1/models/gemini-2.0-flash-lite:generateContent?key=${GEMINI_API_KEY}`;
+    
+    // Request data
+    const requestData = JSON.stringify({
+      contents: [
+        {
+          parts: [
+            {
+              text: prompt
+            }
+          ]
+        }
+      ],
+      generationConfig: {
+        temperature: 0.7,
+        maxOutputTokens: 800
+      }
+    });
+    
+    // Request options
+    const options = {
+      hostname: geminiEndpoint,
+      path: path,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(requestData)
+      }
+    };
+    
+    // Create request
+    const req = https.request(options, (res) => {
+      if (res.statusCode !== 200) {
+        console.error(`❌ API request failed with status code: ${res.statusCode}`);
+        reject(new Error(`API request failed with status code: ${res.statusCode}`));
+        return;
+      }
+      
+      let data = '';
+      
+      res.on('data', (chunk) => {
+        data += chunk;
+      });
+      
+      res.on('end', () => {
+        try {
+          const responseJson = JSON.parse(data);
+          
+          // Extract text from Gemini response
+          if (responseJson.candidates && 
+              responseJson.candidates[0] && 
+              responseJson.candidates[0].content && 
+              responseJson.candidates[0].content.parts && 
+              responseJson.candidates[0].content.parts[0] && 
+              responseJson.candidates[0].content.parts[0].text) {
+            
+            const responseText = responseJson.candidates[0].content.parts[0].text.trim();
+            resolve(responseText);
+          } else {
+            console.error('❌ Unexpected API response structure:', data.substring(0, 500));
+            reject(new Error('Unexpected API response structure'));
+          }
+        } catch (parseError) {
+          console.error('❌ Error parsing API response:', parseError);
+          reject(parseError);
+        }
+      });
+    });
+    
+    req.on('error', (error) => {
+      console.error('❌ Error making API request:', error);
+      reject(error);
+    });
+    
+    // Write data to request body
+    req.write(requestData);
+    req.end();
+  });
 }
 
 /**
@@ -495,32 +595,30 @@ async function testS3Connection() {
 }
 
 /**
- * Test function to validate OpenAI API connectivity
+ * Test function to validate Gemini API connectivity using direct HTTPS
  */
-async function testOpenAIConnection() {
+async function testGeminiConnection() {
   try {
-    if (!process.env.OPENAI_API_KEY) {
-      console.error('❌ OPENAI_API_KEY environment variable is not set');
-      return { success: false, error: 'API key not set' };
+    if (!GEMINI_API_KEY) {
+      console.error('❌ Missing Gemini API key');
+      return { 
+        success: false, 
+        error: 'Missing Gemini API key' 
+      };
     }
     
-    console.log('🔍 Testing OpenAI connection...');
-    const response = await openai.chat.completions.create({
-      model: "gpt-4o",
-      messages: [
-        { role: "system", content: "You are a test assistant." },
-        { role: "user", content: "Say 'connection test successful'" }
-      ],
-      max_tokens: 10
-    });
+    console.log('🔍 Testing Gemini connection...');
     
-    console.log('✅ OpenAI API connection successful');
+    // Use our direct API call function
+    const testResponse = await callGeminiAPI("Say 'connection test successful'");
+    
+    console.log('✅ Gemini API connection successful');
     return {
       success: true,
-      response: response.choices[0].message.content
+      response: testResponse
     };
   } catch (error) {
-    console.error('❌ OpenAI API connection test failed:', error);
+    console.error('❌ Gemini API connection test failed:', error);
     return {
       success: false,
       error: error.message
