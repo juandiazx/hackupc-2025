@@ -47,14 +47,7 @@ h3 {
   @apply font-medium;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    @apply text-primary bg-gradient-to-b from-[#B3D9FF] to-white;
-  }
-}
 
-@media (prefers-color-scheme: dark) {
   :root {
     @apply text-primary bg-gradient-to-b from-[#007FFF] to-[#101B25];
   }
-}
