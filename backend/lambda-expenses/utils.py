@@ -5,7 +5,7 @@ from io import BytesIO
 
 s3_client = None
 
-def response_creator(statusCode, body):
+def response_creator(status_code, body):
     """
     Create a formatted response for API Gateway.
     
@@ -17,11 +17,13 @@ def response_creator(statusCode, body):
         dict: Formatted API Gateway response
     """
     return {
-        'statusCode': statusCode,
-        'headers': {
-            'Content-Type': 'application/json'
+        "statusCode": status_code,
+        "headers": {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET,OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type"
         },
-        'body': json.dumps(body)
+        "body": json.dumps(body) if not isinstance(body, str) else body
     }
 
 def error_handler(e, message=None):
