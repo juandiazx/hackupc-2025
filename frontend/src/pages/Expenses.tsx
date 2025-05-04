@@ -4,6 +4,14 @@ import Menu from "../components/Menu";
 import PredictionChart from "../components/PredictionChart";
 import ExpensesPopUp from "../components/ExpensesPopUp";
 import { AnimatePresence, motion } from "framer-motion";
+import { useEffect } from "react";
+import {
+  EndMonthExpensePrediction,
+  MonthlyExpensesReport,
+} from "../types/types";
+
+const apiurl =
+  "https://hcb4mo3jdsztivtpdzll43sdfi0ccpkp.lambda-url.eu-west-1.on.aws/";
 
 const Expenses = () => {
   const [expensesPopUp, setExpensesPopUp] = useState(false);
@@ -13,6 +21,74 @@ const Expenses = () => {
   };
 
   const [showChart, setShowChart] = useState(false);
+
+  const [endMonthExpensePrediction, setEndMonthExpensePrediction] =
+    useState<EndMonthExpensePrediction>();
+
+  const [monthlyExpensesReport, setMonthlyExpensesReport] =
+    useState<MonthlyExpensesReport>({
+      wants: 0,
+      needs: 0,
+      expenses: [
+        {
+          amount: 0,
+          date: new Date(),
+          category: "",
+          description: "",
+          want: false,
+        },
+      ],
+    });
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const responses = await Promise.all([
+            fetch(`${apiurl}?action=predict-expenses`, {
+              method: "GET",
+              headers: {
+                "Content-type": "application/json",
+              },
+            }),
+            fetch(`${apiurl}?action=classify-expenses`, {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }),
+          ]);
+    
+          const data = await Promise.all(
+            responses.map((response) => {
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+              return response.json();
+            })
+          );
+    
+          setEndMonthExpensePrediction(data[0]);
+          setMonthlyExpensesReport(data[1]);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+    
+      fetchData();
+    }, []);
+
+    useEffect(() => {
+      if (endMonthExpensePrediction) {
+        console.log("Updated prediction:", endMonthExpensePrediction);
+      }
+    }, [endMonthExpensePrediction]);
+    
+    useEffect(() => {
+      if (monthlyExpensesReport) {
+        console.log("Updated report:", monthlyExpensesReport);
+      }
+    }, [monthlyExpensesReport]);
+    
 
   return (
     <>
@@ -37,8 +113,20 @@ const Expenses = () => {
             All expenses
           </button>
         </div>
-        <HalfPieChart></HalfPieChart>
+        <HalfPieChart
+          wants={monthlyExpensesReport.wants}
+          needs={monthlyExpensesReport.needs}
+        />
       </motion.div>
+
+      <AnimatePresence>
+        {expensesPopUp && (
+          <ExpensesPopUp
+            expenses={monthlyExpensesReport.expenses}
+            togglePopup={togglePopUp}
+          />
+        )}
+      </AnimatePresence>
 
       <motion.div
         initial={{ display: "none", opacity: 0, scale: "90%" }}
@@ -48,12 +136,10 @@ const Expenses = () => {
         className="w-9/10 bg-container rounded-lg h-fit px-3 py-3 flex flex-col items-center mb-6"
       >
         <h3 className="ml-2 w-full mb-6">Expense projection</h3>
-        <div className="h-[250px] w-full">{showChart && <PredictionChart />}</div>
+        <div className="h-[250px] w-full">
+          {showChart && <PredictionChart data={endMonthExpensePrediction} />}
+        </div>
       </motion.div>
-
-      <AnimatePresence>
-        {expensesPopUp && <ExpensesPopUp togglePopup={togglePopUp} />}
-      </AnimatePresence>
 
       {/* {!expensesPopUp && <Menu />} */}
     </>

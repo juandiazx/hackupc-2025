@@ -23,17 +23,17 @@ const ExpenseItem = (props: ExpenseItemInterface) => {
   return (
     <div className="inline-flex justify-between w-full px-8 items-center mx-auto">
       <div className="inline-flex gap-3">
-        <img src={CategoryImageRoutes[props.category]} alt={props.category} />
+        <img className="size-10" src={CategoryImageRoutes[props.category]} alt={props.category} />
 
-        <div>
-          <h3 className="text-base font-semibold">{props.category}</h3>
-          <p className="text-sm text-white/60 leading-3">{props.date.toLocaleDateString("en-GB")}</p>
+        <div className="w-fit">
+          <h3 className="text-base w-[18ch] font-semibold">{props.description}</h3>
+          <p className="text-sm text-white/60 leading-3">{new Date(props.date).toLocaleDateString("en-GB")}</p>
         </div>
       </div>
-      <div className="">
-        <p className="text-xl font-light tracking-tight inline-flex">{props.amount} €</p>
-        <p className={`text-sm font-semibold
-          ${props.wants ? "text-[#FF5959]F" : "text-[#5F7CFA]"}`}>
+      <div className="w-fit">
+        <p className="text-xl font-light tracking-tight inline-flex text-right w-full">{props.amount} €</p>
+        <p className={`text-sm font-semibold text-right
+          ${props.wants ? "text-[#FF5959]" : "text-[#5F7CFA]"}`}>
           {props.wants ? "Wants" : "Needs"}
         </p>
       </div>
