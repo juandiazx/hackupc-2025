@@ -1,5 +1,7 @@
 # 💸 Wise Wallet — HackUPC 2025
 
+[View on Devpost](https://devpost.com/software/spendly-nx3hb0?ref_content=user-portfolio&ref_feature=in_progress)
+
 Wise Wallet is a smart personal finance assistant that uses AI to **classify** and **predict** your ***expenses***, and provides insightful feedback through a voice assistant interface with **Alexa Echo Dot**. It combines a web-based frontend, serverless backend, and machine learning models to empower users with intelligent budgeting and financial planning tools.
 
 ## 🧠 Features
