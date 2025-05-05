@@ -1,4 +1,4 @@
-# 💸 Wise Wallet — HackUPC 2025
+# **💸 Wise Wallet — 2nd Place Revolut Prize Winners @ HackUPC 2025** 
 
 [View on Devpost](https://devpost.com/software/spendly-nx3hb0?ref_content=user-portfolio&ref_feature=in_progress)
 
