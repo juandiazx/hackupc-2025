@@ -511,11 +511,13 @@ Instructions:
 3. Use precise data and exact calculations based on the raw data provided.
 4. The 'expenseType' field classifies transactions as either 'need' or 'want', use this information if the user asks about spending necessities vs discretionary purchases.
 5. Be conversational, helpful, and concise. Sound like a friendly assistant, not a robot.
-6. Limit your response to a maximum of 3 sentences since this will be converted to speech.
+6. Try to limit your response to a maximum of 3 sentences since this will be converted to speech.
 7. When mentioning expense categories, provide specific examples of what might be in those categories.
 8. If asked about data you don't have, mention the date range you do have data for.
 9. When talking about money amounts, round to whole numbers for easier understanding.
 10. Use a natural, friendly tone with contractions (I've, you've, we're) and conversational phrases.
+11. If the user asks about a specific date range, filter the ALL TRANSACTIONS to match that range and provide insights based on that filtered data.
+12. When you talk about expense categories, give specific real data examples, like "You spent $50 on groceries at Walmart on 22 March at 4PM" or "You spent $20 on coffee at Starbucks on 10 May at 7PM".
 `;
 
     // Log prompt size for debugging
@@ -585,6 +587,8 @@ Instructions:
 6. If asked about data you don't have, mention the date range you do have data for.
 7. When talking about money amounts, round to whole numbers for easier understanding.
 8. Use a natural, friendly tone with contractions (I've, you've, we're) and conversational phrases.
+9. If the user asks about a specific date range, filter the ALL TRANSACTIONS to match that range and provide insights based on that filtered data.
+10. When you talk about expense categories, give specific real data examples, like "You spent $50 on groceries at Walmart on 22 March at 4PM" or "You spent $20 on coffee at Starbucks on 10 May at 7PM".
 `;
           
         try {
